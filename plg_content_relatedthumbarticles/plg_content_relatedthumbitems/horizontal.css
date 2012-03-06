@@ -1,0 +1,96 @@
+.rtih {
+	width: 100%;
+}
+
+.rtih_before {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+.rtih_after {
+	font-size: 14px;
+	font-weight: bold;
+	clear: both;
+}
+
+.rtih_bloc {
+	width: 100%;
+}
+
+.rtih_entry {
+	display: block;
+	float: left;
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: rgb(221, 221, 221);
+	border-bottom-style: none;
+	border-bottom-width: initial;
+	border-bottom-color: initial;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding-top: 6px;
+	padding-right: 6px;
+	padding-bottom: 6px;
+	padding-left: 6px;
+	text-decoration: none;
+
+    text-align: justify;
+	cursor: pointer;
+	padding-right: 20px;
+	height: auto; /* Set the height here according to your text and thumbnail height*/
+}
+
+.rtih_entry:hover {
+  background-color: #fafafa;
+  text-decoration: none;
+}
+
+.rtih_desc:after {
+	content:"...";
+}
+
+.rtih_clear {
+	clear: both;
+}
+
+.rtih_desc {
+	margin-top: 2px;
+	display: block;
+	color: gray;
+	overflow: hidden;
+	position: relative;
+}
+
+.plgRelatedThumbnailHorizontalLi {
+	width: 150px;
+	float: left;
+	display: inline;
+	margin-right: 15px;;
+	padding: 0;
+	font-size: 12px;
+	min-height: 150px;
+	list-style: none;
+}
+
+.rtih_img {
+	padding: 5px;
+	background: #F7F7F7;
+	border: 1px solid #DDD;
+	float: left;
+	width: auto;
+	height: auto;
+}
+
+.rtih_link {
+	margin-top: 2px;
+	display: block;
+	border: none;
+	text-decoration: none;
+}
+
+.rtih_ago {
+	font-weight: bold;
+}

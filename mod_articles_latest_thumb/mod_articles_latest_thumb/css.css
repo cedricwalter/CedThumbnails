@@ -1,0 +1,55 @@
+.latest-posts ul {
+    list-style: none;
+}
+
+.latest-posts .item-content {
+    font-size: 95%;
+    line-height: 1.3em
+}
+
+.latest-posts .item-thumbnail {
+    float: left;
+    margin: 2px 5px 5px 0
+}
+
+.latest-posts .item-title {
+    padding-bottom: .2em;
+    font-size: 12px;
+}
+
+.latest-posts .item-thumbnail img {
+    padding: 0;
+    background: #111111;
+    border: 1px solid #111111;
+    -moz-border-radius: 15px;
+    -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+    -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+}
+
+
+/* Tooltips */
+.tool-tip {
+   float: left;
+   background: #ffc;
+   border: 1px solid #D4D5AA;
+   padding: 5px;
+   max-width: 200px;
+   background-color: white;
+}
+
+.tool-title {
+   padding: 0;
+   margin: 0;
+   font-size: 100%;
+   font-weight: bold;
+   margin-top: -15px;
+   padding-top: 15px;
+   padding-bottom: 5px;
+   background-color: white;
+}
+
+.tool-text {
+   font-size: 100%;
+   margin: 0;
+}

@@ -1,0 +1,28 @@
+.related-posts ul {
+    list-style: none;
+}
+
+.related-posts .item-content {
+    font-size: 95%;
+    line-height: 1.3em
+}
+
+.related-posts .item-thumbnail {
+    float: left;
+    margin: 2px 5px 5px 0
+}
+
+.related-posts .item-title {
+    padding-bottom: .2em;
+    font-size: 12px;
+}
+
+.related-posts .item-thumbnail img {
+    padding: 0;
+    background: #111111;
+    border: 1px solid #111111;
+    -moz-border-radius: 15px;
+    -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+    -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+}

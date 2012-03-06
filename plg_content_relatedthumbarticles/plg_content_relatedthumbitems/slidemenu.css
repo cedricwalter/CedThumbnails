@@ -1,0 +1,47 @@
+
+.plgRelatedThumbnailAccordion_clear {
+    clear: both;
+}
+
+.plgRelatedThumbnailAccordion {list-style:none; width:360px; height:90px; display:block; overflow:hidden;}
+
+.plgRelatedThumbnailAccordion li {float:left; display:inline; overflow:hidden;}
+
+.plgRelatedThumbnailAccordion li img {padding:0; margin-right:5px;}
+
+.plgRelatedThumbnailAccordion li.left {background:#c0c000; }
+
+.plgRelatedThumbnailAccordion li.middle {background:#d3d2d0; }
+
+.plgRelatedThumbnailAccordion li.right {background:#ff0000; }
+
+.plgRelatedThumbnailAccordion p.left {
+	font:normal 11px verdana; color:#202000;
+	line-height: 14px; background:#c0c000;
+	margin:0 10px 0 0; width:350px;
+	height:88px; display:block;
+      }
+
+.plgRelatedThumbnailAccordion p.middle {
+	font:normal 11px verdana; color:#333;
+	line-height: 14px; background:#d3d2d0;
+	margin:0 10px 0 0; width:350px;
+	height:88px; display:block;
+      }
+
+.plgRelatedThumbnailAccordion p.right {
+	font:normal 11px verdana; color:#fff;
+	line-height: 14px; background:#ff0000;
+	margin:0 10px 0 0; width:350px;
+	height:88px; display:block;
+      }
+
+.plgRelatedThumbnailAccordion a.right {
+	color: #fff;
+	text-decoration: underline;
+      }
+
+.plgRelatedThumbnailAccordion a.right:hover {
+	color: #fff;
+	text-decoration: none;
+      }

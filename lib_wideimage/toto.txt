@@ -1,0 +1,100 @@
+ Volume in drive C has no label.
+ Volume Serial Number is 1629-8799
+
+ Directory of C:\Users\cedric\Dropbox\www\MyExtensions\lib_wideimage\lib_wideimage
+
+11/19/2011  10:05 AM    <DIR>          .
+11/19/2011  10:05 AM    <DIR>          ..
+11/18/2011  11:37 PM             5,167 Canvas.php
+11/18/2011  11:37 PM             5,431 Coordinate.php
+11/18/2011  11:37 PM             1,073 Exception.php
+11/19/2011  10:02 AM    <DIR>          Font
+02/19/2011  12:55 PM            18,326 gpl.txt
+11/18/2011  11:37 PM            29,838 Image.php
+06/19/2011  02:39 PM                31 index.html
+02/19/2011  12:55 PM            26,436 lgpl.txt
+11/19/2011  10:02 AM    <DIR>          Mapper
+11/18/2011  11:37 PM             3,399 MapperFactory.php
+11/19/2011  10:02 AM    <DIR>          Operation
+11/18/2011  11:37 PM             1,863 OperationFactory.php
+11/18/2011  11:37 PM             3,762 PaletteImage.php
+02/19/2011  12:55 PM               945 README
+11/19/2011  10:05 AM                 0 toto.txt
+11/18/2011  11:37 PM             6,269 TrueColorImage.php
+11/19/2011  10:02 AM    <DIR>          vendor
+02/19/2011  12:55 PM                43 VERSION
+11/18/2011  11:37 PM            12,393 WideImage.php
+11/19/2011  10:04 AM               821 wideimage.xml
+              16 File(s)        115,797 bytes
+
+ Directory of C:\Users\cedric\Dropbox\www\MyExtensions\lib_wideimage\lib_wideimage\Font
+
+11/19/2011  10:02 AM    <DIR>          .
+11/19/2011  10:02 AM    <DIR>          ..
+11/18/2011  11:40 PM             1,390 GDF.php
+06/19/2011  02:39 PM                31 index.html
+11/18/2011  11:40 PM             1,676 PS.php
+11/18/2011  11:40 PM             2,349 TTF.php
+               4 File(s)          5,446 bytes
+
+ Directory of C:\Users\cedric\Dropbox\www\MyExtensions\lib_wideimage\lib_wideimage\Mapper
+
+11/19/2011  10:02 AM    <DIR>          .
+11/19/2011  10:02 AM    <DIR>          ..
+11/18/2011  11:40 PM             1,545 BMP.php
+11/18/2011  11:40 PM             1,286 GD.php
+11/18/2011  11:40 PM             1,282 GD2.php
+11/18/2011  11:40 PM             1,592 GIF.php
+06/19/2011  02:39 PM                31 index.html
+11/18/2011  11:40 PM             1,258 JPEG.php
+11/18/2011  11:40 PM             1,298 PNG.php
+11/18/2011  11:40 PM             1,461 TGA.php
+               8 File(s)          9,753 bytes
+
+ Directory of C:\Users\cedric\Dropbox\www\MyExtensions\lib_wideimage\lib_wideimage\Operation
+
+11/19/2011  10:02 AM    <DIR>          .
+11/19/2011  10:02 AM    <DIR>          ..
+11/18/2011  11:39 PM             3,998 AddNoise.php
+11/18/2011  11:39 PM             1,579 ApplyConvolution.php
+11/18/2011  11:39 PM             2,251 ApplyFilter.php
+11/18/2011  11:39 PM             3,273 ApplyMask.php
+11/18/2011  11:39 PM             1,526 AsGrayscale.php
+11/18/2011  11:39 PM             2,063 AsNegative.php
+11/18/2011  11:39 PM             4,678 AutoCrop.php
+11/18/2011  11:39 PM             2,536 CopyChannelsPalette.php
+11/18/2011  11:39 PM             2,025 CopyChannelsTrueColor.php
+11/18/2011  11:39 PM             1,570 CorrectGamma.php
+11/18/2011  11:39 PM             2,844 Crop.php
+11/18/2011  11:39 PM             1,654 Flip.php
+11/18/2011  11:39 PM             2,070 GetMask.php
+06/19/2011  02:39 PM                31 index.html
+11/18/2011  11:39 PM             2,221 Merge.php
+11/18/2011  11:39 PM             1,665 Mirror.php
+11/18/2011  11:40 PM             4,774 Resize.php
+11/18/2011  11:40 PM             3,253 ResizeCanvas.php
+11/18/2011  11:40 PM             1,863 Rotate.php
+11/18/2011  11:40 PM             4,667 RoundCorners.php
+11/18/2011  11:40 PM             4,431 Unsharp.php
+              21 File(s)         54,972 bytes
+
+ Directory of C:\Users\cedric\Dropbox\www\MyExtensions\lib_wideimage\lib_wideimage\vendor
+
+11/19/2011  10:02 AM    <DIR>          .
+11/19/2011  10:02 AM    <DIR>          ..
+11/19/2011  10:02 AM    <DIR>          de77
+06/19/2011  02:39 PM                31 index.html
+               1 File(s)             31 bytes
+
+ Directory of C:\Users\cedric\Dropbox\www\MyExtensions\lib_wideimage\lib_wideimage\vendor\de77
+
+11/19/2011  10:02 AM    <DIR>          .
+11/19/2011  10:02 AM    <DIR>          ..
+11/18/2011  11:38 PM             6,931 BMP.php
+06/19/2011  02:39 PM                31 index.html
+11/18/2011  11:37 PM             4,719 TGA.php
+               3 File(s)         11,681 bytes
+
+     Total Files Listed:
+              53 File(s)        197,680 bytes
+              17 Dir(s)  21,601,701,888 bytes free
