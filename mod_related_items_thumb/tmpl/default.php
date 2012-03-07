@@ -1,33 +1,33 @@
 <?php
 /**
- * @version        CedThumbnails
- * @package
- * @copyright    Copyright (C) 2009 Cedric Walter. All rights reserved.
- * @copyright    www.cedricwalter.com / www.waltercedric.com
- *
+ * @copyright    Copyright (C) 2011 Cedric Walter from www.waltercedric.com. All rights reserved.
  * @license        GNU/GPL, see LICENSE.php
  *
- * CedThumbnails is free software. This version may have been modified pursuant
+ * mod_articles_popular_thumb is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
  * is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
  * See COPYRIGHT.php for copyright notices and details.
- */
+
+ * Author: Cedric Walter
+ * Email: cedric.walter@gmail.com
+ * Web: http://www.waltercedric.com
+ **/
 
 // no direct access
 defined('_JEXEC') or die('Restricted access'); ?>
 
 <!-- Popular Articles with Thumbnails by Cedric Walter - www.waltercedric.com -->
-<div class="related-posts<?php echo htmlspecialchars($params->get('moduleclass_sfx')); ?>">
+<div class="related-posts <?php echo $moduleclass_sfx; ?>">
 <ul>
     <?php foreach ($list as $item) : ?>
         <li>
         <div class="item-content">
             <?php if ($params->get('useThumbnails')) { ?>
                 <div class="item-thumbnail">
-                <a href="<?php echo $item->item->link; ?>" target="_blank">
-                <img alt="<?php echo $item->item->title; ?>"
-                     title="<?php echo $item->item->title; ?>"
+                <a href="<?php echo $item->route; ?>" target="_blank">
+                <img alt="<?php echo $item->title; ?>"
+                     title="<?php echo $item->title; ?>"
                      width="<?php echo $params->get('thumbnailWidth')?>"
                      height="<?php echo $params->get('thumbnailHeight')?>"
                      border="0" src="<?php echo $item->imageSrc; ?>">
@@ -35,7 +35,7 @@ defined('_JEXEC') or die('Restricted access'); ?>
                 </div>
             <?php } ?>
             <?php if ($params->get('useTitle')) { ?>
-                <div class="item-title"><a href="<?php echo $item->item->link; ?>"><?php echo $item->title; ?></a></div>
+                <div class="item-title"><a href="<?php echo $item->route; ?>"><?php echo $item->title; ?></a></div>
             <?php } ?>
             <?php if ($params->get('useTeaser')) { ?>
                 <div class="item-snippet"><?php echo $item->teaser; ?></div>
