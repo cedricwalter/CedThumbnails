@@ -110,6 +110,7 @@ abstract class modRelatedItemsThumbHelper
                     $temp = $db->loadObjectList();
 
                     if (count($temp)) {
+                        $counter = 0;
                         foreach ($temp as $row)
                         {
                             if ($row->cat_state == 1) {
@@ -119,8 +120,10 @@ abstract class modRelatedItemsThumbHelper
                                 $row->title = comCedThumbnailsHelper::getTitle($params, $row->title);
                                 $row->teaser = comCedThumbnailsHelper::getDescription($params, $row->introtext);
 
-
                                 $related[] = $row;
+                                if ($counter++ == $count) {
+                                    break;
+                                }
                             }
                         }
                     }
