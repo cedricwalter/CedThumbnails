@@ -21,7 +21,10 @@ abstract class modRelatedItemsThumbHelper
         $app = JFactory::getApplication();
         $user = JFactory::getUser();
         $userId = (int)$user->get('id');
+
         $count = intval($params->get('count', 5));
+        $showDateInDays = true;
+
         $groups = implode(',', $user->getAuthorisedViewLevels());
         $date = JFactory::getDate();
 
@@ -114,16 +117,18 @@ abstract class modRelatedItemsThumbHelper
                         foreach ($temp as $row)
                         {
                             if ($row->cat_state == 1) {
+                                if ($counter++ == $count) {
+                                    break;
+                                }
+
                                 $row->route = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catslug));
                                 $row->image = comCedThumbnailsHelper::getImage($params, $row);
                                 $row->imageSrc = comCedThumbnailsHelper::getResizedImageSource($params, $row->image, "mod_related_items_thumb");
                                 $row->title = comCedThumbnailsHelper::getTitle($params, $row->title);
                                 $row->teaser = comCedThumbnailsHelper::getDescription($params, $row->introtext);
-
+                                $row->date = comCedThumbnailsHelper::getDateRepresentation($params, $row->created, $showDateInDays);
                                 $related[] = $row;
-                                if ($counter++ == $count) {
-                                    break;
-                                }
+
                             }
                         }
                     }
