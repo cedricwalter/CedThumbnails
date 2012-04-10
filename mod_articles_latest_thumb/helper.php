@@ -1,17 +1,10 @@
 <?php
 /**
- * @version        CedThumbnails
- * @package
- * @copyright    Copyright (C) 2009 Cedric Walter. All rights reserved.
- * @copyright    www.cedricwalter.com / www.waltercedric.com
- *
- * @license        GNU/GPL, see LICENSE.php
- *
- * CedThumbnails is free software. This version may have been modified pursuant
- * to the GNU General Public License, and as distributed it includes or
- * is derivative of works licensed under the GNU General Public License or
- * other free or open source software licenses.
- * See COPYRIGHT.php for copyright notices and details.
+ * @version        $Id: helper.php 21451 2011-06-04 19:00:00Z dextercowley $
+ * @package        Joomla.Site
+ * @subpackage    mod_articles_latest
+ * @copyright    Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
+ * @license        GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 // no direct access
@@ -42,6 +35,9 @@ abstract class modArticlesLatestHelper
         // Set the filters based on the module params
         $model->setState('list.start', 0);
         $model->setState('list.limit', (int)$params->get('count', 5));
+        $model->setState('list.select', 'a.fulltext, a.id, a.title, a.alias, a.title_alias, a.introtext, a.state, a.catid, a.created, a.created_by, a.created_by_alias,' .
+        			' a.modified, a.modified_by, a.publish_up, a.publish_down, a.images, a.urls, a.attribs, a.metadata, a.metakey, a.metadesc, a.access,' .
+        			' a.hits, a.featured,');
         $model->setState('filter.published', 1);
 
         // Access filter

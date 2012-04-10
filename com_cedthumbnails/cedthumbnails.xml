@@ -8,7 +8,7 @@
     <authorUrl>www.waltercedric.com</authorUrl>
     <copyright>(c) 2011 Cedric Walter www.waltercedric.com</copyright>
     <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
-    <version>2.5.0</version>
+    <version>2.5.3</version>
     <description>Related/popular/latest posts with thumbnails for Joomla. Use the library WideImage for PHP.
         3 modules and 1 plugin Extensions.</description>
 

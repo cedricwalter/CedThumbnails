@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension
         type="module"
-        version="1.7"
+        version="2.5"
         client="site"
         method="upgrade">
     <name>Related Articles with thumbnails</name>
@@ -12,7 +12,7 @@
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <authorEmail>admin@joomla.org</authorEmail>
     <authorUrl>www.joomla.org/www.waltercedric.com</authorUrl>
-    <version>2.5.2</version>
+    <version>2.5.3</version>
     <description>MOD_RELATED_XML_DESCRIPTION</description>
 
     <!-- Extension Update Specification -->

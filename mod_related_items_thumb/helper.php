@@ -69,6 +69,7 @@ abstract class modRelatedItemsThumbHelper
                     $query->select('a.id');
                     $query->select('a.title');
                     $query->select('a.introtext');
+                    $query->select('a.fulltext');
                     $query->select('DATE_FORMAT(a.created, "%Y-%m-%d") as created');
                     $query->select('a.catid');
                     $query->select('cc.access AS cat_access');

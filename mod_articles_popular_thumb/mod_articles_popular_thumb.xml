@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension
         type="module"
-        version="1.7"
+        version="2.5"
         client="site"
         method="upgrade">
     <name>Popular Articles with thumbnails</name>
@@ -12,13 +12,14 @@
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
     <authorEmail>cedric.walter@gmail.com</authorEmail>
     <authorUrl>www.waltercedric.com</authorUrl>
-    <version>2.5.0</version>
+    <version>2.5.3</version>
     <description>DESCMOSTREAD</description>
 
     <languages>
         <language tag="en-GB">en-GB.mod_articles_popular_thumb.ini</language>
         <language tag="en-GB">en-GB.mod_articles_popular_thumb.sys.ini</language>
     </languages>
+
     <!-- Extension Update Specification -->
     <!-- Note: No spaces or linebreaks allowed between the server tags -->
     <updateservers>
@@ -65,7 +66,7 @@
             <fieldset name="Thumbnails" label="Thumbnails">
 
                 <field name="useJIMage" type="radio" default="1" label="Use Joomla 2.5 JIMage"
-                                       description="Only apply to Joomla 2.5. If you are using Joomla 2.5, the build in library JImage can be used instead of wideImage, Attention JIMage do not support thumbnails of remote images other than your site!">
+                       description="Only apply to Joomla 2.5. If you are using Joomla 2.5, the build in library JImage can be used instead of wideImage, Attention JIMage do not support thumbnails of remote images other than your site!">
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
@@ -97,34 +98,33 @@
             <fieldset name="Text" label="Text">
 
 
-                            <field name="useTitle" type="radio" default="1" label="Use Title" description="Use Title">
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
-                            </field>
+                <field name="useTitle" type="radio" default="1" label="Use Title" description="Use Title">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
 
-                            <field name="titleLength" type="text" default="15" required="true" label="Title Size"
-                                   description="Number of Characters to be trimmed from title"
-                                   size="3"/>
-
-
-                            <field name="useTeaser" type="radio" default="1" label="Introduction Text" description="USETEASER">
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
-                            </field>
-
-                            <field name="teaserEnding" type="text" required="false" default="" label="Title/Text ending"
-                                   description="TEASERENDING"
-                                   size="20"/>
-
-                            <field name="teaserLength" type="text" default="60" required="true" label="Text Size"
-                                   description="Number of Characters to be trimmed from introduction text"
-                                   size="3"/>
+                <field name="titleLength" type="text" default="15" required="true" label="Title Size"
+                       description="Number of Characters to be trimmed from title"
+                       size="3"/>
 
 
+                <field name="useTeaser" type="radio" default="1" label="Introduction Text" description="USETEASER">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
 
-                            <field name="matrixSize" type="text" default="3" required="true" label="Matrix layout"
-                                   description="Number of images per line"
-                                   size="2"/>
+                <field name="teaserEnding" type="text" required="false" default="" label="Title/Text ending"
+                       description="TEASERENDING"
+                       size="20"/>
+
+                <field name="teaserLength" type="text" default="60" required="true" label="Text Size"
+                       description="Number of Characters to be trimmed from introduction text"
+                       size="3"/>
+
+
+                <field name="matrixSize" type="text" default="3" required="true" label="Matrix layout"
+                       description="Number of images per line"
+                       size="2"/>
 
 
             </fieldset>
