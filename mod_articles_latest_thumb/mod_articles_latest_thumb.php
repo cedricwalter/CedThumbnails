@@ -10,8 +10,10 @@
 // no direct access
 defined('_JEXEC') or die;
 require_once dirname(__FILE__) . '/helper.php';
+
 $layout = $params->get('layout', 'default');
 modArticlesLatestHelper::addStyleSheet($layout);
+
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 $list = modArticlesLatestHelper::getList($params);
 require JModuleHelper::getLayoutPath('mod_articles_latest_thumb', $layout);

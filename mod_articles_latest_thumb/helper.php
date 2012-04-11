@@ -37,7 +37,7 @@ abstract class modArticlesLatestHelper
         $model->setState('list.limit', (int)$params->get('count', 5));
         $model->setState('list.select', 'a.fulltext, a.id, a.title, a.alias, a.title_alias, a.introtext, a.state, a.catid, a.created, a.created_by, a.created_by_alias,' .
         			' a.modified, a.modified_by, a.publish_up, a.publish_down, a.images, a.urls, a.attribs, a.metadata, a.metakey, a.metadesc, a.access,' .
-        			' a.hits, a.featured,');
+        			' a.hits, a.featured');
         $model->setState('filter.published', 1);
 
         // Access filter
@@ -120,7 +120,6 @@ abstract class modArticlesLatestHelper
             $lists[$i]->teaser = comCedThumbnailsHelper::getDescription($params, $item->introtext);
             $lists[$i]->title =  comCedThumbnailsHelper::getTitle($params, $item->title);
             $i++;
-            
         }
 
         return $lists;
@@ -132,6 +131,6 @@ abstract class modArticlesLatestHelper
     public function addStyleSheet($layout)
     {
         $document =& JFactory::getDocument();
-        $document->addStyleSheet("media/mod_articles_latest_thumb/".$layout.".css");
+        $document->addStyleSheet("media/mod_articles_latest_thumb/".substr($layout, 2).".css");
     }
 }

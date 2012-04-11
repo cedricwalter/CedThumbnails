@@ -183,19 +183,10 @@
                     name="advanced">
 
                 <field
-                        name="layout"
-                        type="list"
-                        default="default"
-                        label="JFIELD_ALT_LAYOUT_LABEL"
-                        description="JFIELD_ALT_MODULE_LAYOUT_DESC">
-                    <option
-                            value="default">Default
-                    </option>
-                    <option
-                            value="textBlocksOverImage">Text Blocks Over Image
-                    </option>
-                </field>
-
+            					name="layout"
+            					type="modulelayout"
+            					label="JFIELD_ALT_LAYOUT_LABEL"
+            					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
 
                 <field
                         name="moduleclass_sfx"
