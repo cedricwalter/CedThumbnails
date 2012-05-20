@@ -1,18 +1,4 @@
 <?php
-/**
- * @version        CedThumbnails
- * @package
- * @copyright    Copyright (C) 2009 Cedric Walter. All rights reserved.
- * @copyright    www.cedricwalter.com / www.waltercedric.com
- *
- * @license        GNU/GPL, see LICENSE.php
- *
- * CedThumbnails is free software. This version may have been modified pursuant
- * to the GNU General Public License, and as distributed it includes or
- * is derivative of works licensed under the GNU General Public License or
- * other free or open source software licenses.
- * See COPYRIGHT.php for copyright notices and details.
- */
 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
@@ -30,11 +16,11 @@ class comCedThumbnailsHelper
         $thumbnailWidth = intval($params->get('thumbnailWidth', 70));
         $thumbnailHeight = intval($params->get('thumbnailHeight', 70));
         $defaultImage = $params->get('defaultImage', "/media/plg_content_relatedthumbitems/default.jpg");
-        return comCedThumbnailsHelper::getResizedImageSourceWith($defaultImage,$thumbnailWidth,$thumbnailHeight, $imagePathRelativeOrAbsolute, $extension);
+        return comCedThumbnailsHelper::getResizedImageSourceWith($defaultImage, $thumbnailWidth, $thumbnailHeight, $imagePathRelativeOrAbsolute, $extension);
     }
 
 
-    public function getResizedImageSourceWith($defaultImage,$thumbnailWidth,$thumbnailHeight, $imagePathRelativeOrAbsolute, $extension = "")
+    public function getResizedImageSourceWith($defaultImage, $thumbnailWidth, $thumbnailHeight, $imagePathRelativeOrAbsolute, $extension = "")
     {
         //make a unique file per extension since some extensions may want to have different size of the same image
         //if startwith
@@ -59,7 +45,7 @@ class comCedThumbnailsHelper
             catch (Exception $e) {
                 error_log("while processing image " . $image . " exception occured " . $e);
             }
-            return comCedThumbnailsHelper::getResizedImageSourceWith($defaultImage,$thumbnailWidth,$thumbnailHeight, $defaultImage, $extension);
+            return comCedThumbnailsHelper::getResizedImageSourceWith($defaultImage, $thumbnailWidth, $thumbnailHeight, $defaultImage, $extension);
         }
     }
 
@@ -150,6 +136,21 @@ class comCedThumbnailsHelper
                 }
             }
         }
+        if ($image == null && strpos($html, "http://www.youtube")) {
+            //http://rubular.com/r/M9PJYcQxRW
+            /*
+             * youtube.com/v/{vidid}
+             * youtube.com/vi/{vidid}
+             * youtube.com/?v={vidid}
+             * youtube.com/?vi={vidid}
+             * youtube.com/watch?v={vidid}
+             * youtube.com/watch?vi={vidid}
+             * youtu.be/{vidid}
+             */
+            preg_match('#(?<=(?:v|i)=)[a-zA-Z0-9-]+(?=&)|(?<=(?:v|i)\/)[^&\n]+|(?<=embed\/)[^"&\n]+|(?<=(?:v|i)=)[^&\n]+|(?<=youtu.be\/)[^&\n]+#', $html, $images);
+            $image = "http://i.ytimg.com/vi/".$images[0]."/0.jpg";
+        }
+
         return $image;
     }
 
@@ -260,8 +261,7 @@ class comCedThumbnailsHelper
                 $textDaysAgo = $params->get('textdaysago', "days ago");
                 $date .= comCedThumbnailsHelper::dateDiff($articleDate, $nowDate) . " " . $textDaysAgo;
             }
-            else
-            {
+            else {
                 $date .= $articleDate;
             }
         }
@@ -272,8 +272,8 @@ class comCedThumbnailsHelper
     /**
      * @return bool true if Joomla 1.5
      */
-    public
-    function isJoomla15()
+    public static
+    function  isJoomla15()
     {
         if (version_compare(JVERSION, '1.7.0', 'ge')) {
             return false;
@@ -326,8 +326,7 @@ class comCedThumbnailsHelper
             // Return difference
             return round(($end_date - $start_date), 0);
         }
-        else
-        {
+        else {
             //the one above is better!
             return round((strtotime($endDate) - strtotime($startDate)) / 86400);
             //return "<font color='red'>public function gregoriantojd() do not exist! upgrade to php 5.1 or use in relatedArticles admin panel showDateInDays = NO as a workaround</font>";

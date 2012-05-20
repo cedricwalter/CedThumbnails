@@ -10,7 +10,7 @@
     <creationDate>Dec 2011</creationDate>
     <copyright>Copyright (C) 2011 waltercedric.com All rights reserved.</copyright>
     <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
-    <version>2.5.3</version>
+    <version>2.5.5</version>
     <description>Package Cedric Walter thumbnails</description>
     <scriptfile>install.script.php</scriptfile>
 
@@ -19,13 +19,13 @@
     </files>
     	
     <cogs>
-        <cog type="component" client="site" access="0" enabled="true" protected="false" remove_admin_menu="true">
+        <cog type="component" client="administrator" access="0" enabled="true" protected="false">
 		com_cedthumbnails
-	 	<name>CED Thumbnails component with reusable code shared by all other modules and plugins</name>
+	 	<name>CED Thumbnails</name>
 	</cog>
         <cog type="plugin" client="site" ordering="1" access="1" enabled="true" protected="false">
 		   plg_content_relatedthumbarticles
-		   <name>Plugin Related Articles</name>
+		   <name>Plugin Related Articles With Thumbnails</name>
 	           <description>This plugin displays other Articles that are related to the one currently being viewed. These relations are established by the Meta Keywords or using Joomla categories.</description>
 	</cog>
         <cog type="library" enabled="true" protected="false">
@@ -35,17 +35,17 @@
 	</cog>
          <cog type="module" client="site">
 		mod_articles_latest_thumb
-		<name>Module Related Articles</name>
+		<name>Module Related Articles With Thumbnails</name>
            	<description>This is a drop in replacement for the Joomla! core module "Latest Articles", it offer the same level of features but also add thumbnails.</description>
 	</cog>
         <cog type="module" client="site">
 		mod_articles_popular_thumb
-		<name>Module Related Articles</name>
+		<name>Module Related Articles With Thumbnails</name>
            	<description>This is a drop in replacement for the Joomla! core module "Popular Articles", it offer the same level of features but also add thumbnails.</description>
 	</cog>
          <cog type="module" client="site">
 		mod_related_items_thumb
-		<name>Module Related Articles</name>
+		<name>Module Related Articles With Thumbnails</name>
            	<description>This is a drop in replacement for the Joomla! core module "Related Articles", it offer the same level of features but also add thumbnails. This Module displays other Articles that are related to the one currently being viewed. These relations are established by the Meta Keywords. </description>
 	</cog>
     </cogs>

@@ -12,20 +12,13 @@
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
     <authorEmail>cedric.walter@gmail.com</authorEmail>
     <authorUrl>www.waltercedric.com</authorUrl>
-    <version>2.5.3</version>
+    <version>2.5.5</version>
     <description>DESCMOSTREAD</description>
 
     <languages>
         <language tag="en-GB">en-GB.mod_articles_popular_thumb.ini</language>
         <language tag="en-GB">en-GB.mod_articles_popular_thumb.sys.ini</language>
     </languages>
-
-    <!-- Extension Update Specification -->
-    <!-- Note: No spaces or linebreaks allowed between the server tags -->
-    <updateservers>
-        <server type="extension" priority="1" name="Extension Update Site">http://www.waltercedric.com/update/modules/mod_articles_popular_thumb/extension.xml</server>
-        <server type="collection" priority="2" name="Collection Update Site">http://www.waltercedric.com/update/update.xml</server>
-    </updateservers>
 
     <media>
         <folder>mod_articles_popular_thumb</folder>
