@@ -17,7 +17,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 require_once JPATH_SITE . '/components/com_content/helpers/route.php';
-require_once JPATH_SITE . '/components/com_cedthumbnails/helper.php';
+require_once JPATH_SITE . '/components/com_cedthumbnails/helpers/helper.php';
 
 jimport('joomla.application.component.model');
 
@@ -64,6 +64,8 @@ class modMostReadThumbHelper
 
         $items = $model->getItems();
 
+        $comCedThumbnailsHelper =  new comCedThumbnailsHelper();
+
         $i = 0;
         $lists = array();
         foreach ($items as &$item) {
@@ -77,10 +79,10 @@ class modMostReadThumbHelper
                 $item->link = JRoute::_('index.php?option=com_user&view=login');
             }
             $lists[$i]->item = $item;
-            $lists[$i]->image = comCedThumbnailsHelper::getImage($params, $item);
-            $lists[$i]->imageSrc = comCedThumbnailsHelper::getResizedImageSource($params, $lists[$i]->image, "mod_articles_popular_thumb");
-            $lists[$i]->title = comCedThumbnailsHelper::getTitle($params, $item->title);
-            $lists[$i]->teaser = comCedThumbnailsHelper::getDescription($params, $item->introtext);
+            $lists[$i]->image = $comCedThumbnailsHelper->getImage($params, $item);
+            $lists[$i]->imageSrc = $comCedThumbnailsHelper->getResizedImageSource($params, $lists[$i]->image, "mod_articles_popular_thumb");
+            $lists[$i]->title = $comCedThumbnailsHelper->getTitle($params, $item->title);
+            $lists[$i]->teaser = $comCedThumbnailsHelper->getDescription($params, $item->introtext);
             $lists[$i]->text = htmlspecialchars($item->title);
             $i++;
         }

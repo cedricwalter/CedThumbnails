@@ -7,46 +7,32 @@ jimport('joomla.error.log');
 jimport('joomla.version');
 jimport('joomla.filesystem.file');
 
+require_once dirname(__FILE__) . '/file.php';
+require_once dirname(__FILE__) . '/wideimage.php';
+
 class comCedThumbnailsHelper
 {
 
-
-    public function getResizedImageSource($params, $imagePathRelativeOrAbsolute, $extension = "")
+    public function getResizedImageSource($params, $unknowImage, $extension = "")
     {
-        $thumbnailWidth = intval($params->get('thumbnailWidth', 70));
-        $thumbnailHeight = intval($params->get('thumbnailHeight', 70));
-        $defaultImage = $params->get('defaultImage', "/media/plg_content_relatedthumbitems/default.jpg");
-        return comCedThumbnailsHelper::getResizedImageSourceWith($defaultImage, $thumbnailWidth, $thumbnailHeight, $imagePathRelativeOrAbsolute, $extension);
-    }
+        $comCedThumbnailsFile = new comCedThumbnailsFile();
+        $defaultImage = $params->get('defaultImage', "media/plg_content_relatedthumbitems/default.jpg");
 
+        //user may still enter an invalid default image
+        $defaultImage = $comCedThumbnailsFile->filter($defaultImage, "media/plg_content_relatedthumbitems/default.jpg");
 
-    public function getResizedImageSourceWith($defaultImage, $thumbnailWidth, $thumbnailHeight, $imagePathRelativeOrAbsolute, $extension = "")
-    {
-        //make a unique file per extension since some extensions may want to have different size of the same image
-        //if startwith
-        if ((strpos($imagePathRelativeOrAbsolute, "http://") === 0) ||
-            (strpos($imagePathRelativeOrAbsolute, "www.") === 0)
-        ) {
-            $image = $imagePathRelativeOrAbsolute;
-        } else {
-            $image = JURI :: base() . $imagePathRelativeOrAbsolute;
+        //images form articles may be invalid or worse not an image
+        $image = $comCedThumbnailsFile->filter($unknowImage, $defaultImage);
+
+        if ($comCedThumbnailsFile->isCached($image, $extension) == false) {
+            $width = intval($params->get('thumbnailWidth', 70));
+            $height = intval($params->get('thumbnailHeight', 70));
+
+            $comCedThumbnailsWideIMage = new comCedThumbnailsWideIMage();
+            $comCedThumbnailsWideIMage->resize($image, $comCedThumbnailsFile->getResizeImageFilename(), $width, $height);
         }
 
-        $newImageFilename = $extension . "-" . md5($image) . ".jpg"; //TODO may want to keep original file type
-        $newImage = JPATH_SITE . DS . 'cache' . DS . $newImageFilename;
-
-        if (JFile::exists(JURI::Base() . 'cache/' . $newImageFilename) == false) {
-            require_once(JPATH_SITE . DS . 'libraries' . DS . 'wideimage' . DS . 'WideImage.php');
-            try {
-                // fill mean do not keep aspect ratio
-                WideImage::load($image)->resize($thumbnailWidth, $thumbnailHeight, 'fill')->saveToFile($newImage);
-                return JURI::Base() . 'cache/' . $newImageFilename;
-            }
-            catch (Exception $e) {
-                error_log("while processing image " . $image . " exception occured " . $e);
-            }
-            return comCedThumbnailsHelper::getResizedImageSourceWith($defaultImage, $thumbnailWidth, $thumbnailHeight, $defaultImage, $extension);
-        }
+        return JURI::Base() . 'cache/' . $comCedThumbnailsFile->getResizeImageFilename();
     }
 
     public function getArticleLink($row2)
@@ -70,8 +56,7 @@ class comCedThumbnailsHelper
      * @param $fullText
      * @return image|int|null
      */
-    public
-    function getImage($params, $item)
+    public function getImage($params, $item)
     {
         //escape fast
         if (!intval($params->get('useThumbnails', 1))) {
@@ -119,8 +104,7 @@ class comCedThumbnailsHelper
      * @param $html
      * @return image path
      */
-    private
-    function getImageFrom($html)
+    private function getImageFrom($html)
     {
         //cant use a DOM XML parser, not all code is XHTML valid, do a string index before a regexp which cost more time
         $image = null;
@@ -148,7 +132,7 @@ class comCedThumbnailsHelper
              * youtu.be/{vidid}
              */
             preg_match('#(?<=(?:v|i)=)[a-zA-Z0-9-]+(?=&)|(?<=(?:v|i)\/)[^&\n]+|(?<=embed\/)[^"&\n]+|(?<=(?:v|i)=)[^&\n]+|(?<=youtu.be\/)[^&\n]+#', $html, $images);
-            $image = "http://i.ytimg.com/vi/".$images[0]."/0.jpg";
+            $image = "http://i.ytimg.com/vi/" . $images[0] . "/0.jpg";
         }
 
         return $image;
@@ -161,8 +145,7 @@ class comCedThumbnailsHelper
      * @param $params
      * @return unknown_type
      */
-    public
-    function getDescription($params, $text)
+    public function getDescription($params, $text)
     {
         $teaser = null;
         if ($params->get('useTeaser', 1)) {
@@ -174,8 +157,7 @@ class comCedThumbnailsHelper
 
     }
 
-    public
-    function getTitle($params, $title)
+    public function getTitle($params, $title)
     {
         $title = htmlspecialchars($title);
         $titleLength = $params->get('titleLength', '60');
@@ -201,8 +183,7 @@ class comCedThumbnailsHelper
      * @param string|NULL delimiter. Default: '...'
      * @return string processed string
      **/
-    private
-    function trimAndKeepOnlyCompleteWord($string, $numberWords = 25, $delimiter = '...')
+    private function trimAndKeepOnlyCompleteWord($string, $numberWords = 25, $delimiter = '...')
     {
         //strip all HTML tags, not invalid html code may lead to text truncated
         $trimmedString = strip_tags($string);
@@ -227,8 +208,7 @@ class comCedThumbnailsHelper
     }
 
 
-    public
-    function isActiveInCategory($params, &$row)
+    public function isActiveInCategory($params, &$row)
     {
         $selectedCategoryID = $params->get('includedCatIds');
         $articleCategoryID = $row->catid;
@@ -249,8 +229,7 @@ class comCedThumbnailsHelper
      * @param $articleDate
      * @return string
      */
-    public
-    function getDateRepresentation($params, $articleDate, $showDateInDays = true)
+    public function getDateRepresentation($params, $articleDate, $showDateInDays = true)
     {
         $date = "";
         $showDate = $params->get('showDate', 1);
@@ -272,8 +251,7 @@ class comCedThumbnailsHelper
     /**
      * @return bool true if Joomla 1.5
      */
-    public static
-    function  isJoomla15()
+    public function  isJoomla15()
     {
         if (version_compare(JVERSION, '1.7.0', 'ge')) {
             return false;
@@ -290,8 +268,7 @@ class comCedThumbnailsHelper
      * @param $cssClass
      * @return string
      */
-    public
-    function addFooter($cssClass, $textAfter)
+    public function addFooter($cssClass, $textAfter)
     {
         $html = '<div class="' . $cssClass . '">' . $textAfter . '</div>';
         //Please keep this link,
@@ -311,8 +288,7 @@ class comCedThumbnailsHelper
      * @param Date $endDate
      * @return Int
      */
-    public
-    function dateDiff($startDate, $endDate)
+    public function dateDiff($startDate, $endDate)
     {
         if (function_exists('gregoriantojd')) {
             // Parse dates for conversion

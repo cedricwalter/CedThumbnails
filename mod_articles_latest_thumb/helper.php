@@ -11,7 +11,7 @@
 defined('_JEXEC') or die;
 
 require_once JPATH_SITE . '/components/com_content/helpers/route.php';
-require_once JPATH_SITE . '/components/com_cedthumbnails/helper.php';
+require_once JPATH_SITE . '/components/com_cedthumbnails/helpers/helper.php';
 
 jimport('joomla.application.component.model');
 
@@ -99,6 +99,8 @@ abstract class modArticlesLatestHelper
         $model->setState('list.direction', $dir);
 
         $items = $model->getItems();
+        
+        $comCedThumbnailsHelper =  new comCedThumbnailsHelper();
 
         $i = 0;
         $lists = array();
@@ -115,10 +117,10 @@ abstract class modArticlesLatestHelper
 
             //decorate the original model $item
             $lists[$i]->item = $item;
-            $lists[$i]->image = comCedThumbnailsHelper::getImage($params, $item);
-            $lists[$i]->imageSrc = comCedThumbnailsHelper::getResizedImageSource($params, $lists[$i]->image, "mod_articles_latest_thumb");
-            $lists[$i]->teaser = comCedThumbnailsHelper::getDescription($params, $item->introtext);
-            $lists[$i]->title =  comCedThumbnailsHelper::getTitle($params, $item->title);
+            $lists[$i]->image = $comCedThumbnailsHelper->getImage($params, $item);
+            $lists[$i]->imageSrc = $comCedThumbnailsHelper->getResizedImageSource($params, $lists[$i]->image, "mod_articles_latest_thumb");
+            $lists[$i]->teaser = $comCedThumbnailsHelper->getDescription($params, $item->introtext);
+            $lists[$i]->title =  $comCedThumbnailsHelper->getTitle($params, $item->title);
             $i++;
         }
 

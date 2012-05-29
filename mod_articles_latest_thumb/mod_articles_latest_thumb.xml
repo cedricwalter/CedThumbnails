@@ -13,7 +13,7 @@
     <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
     <authorEmail>cedric.walter@gmail.com</authorEmail>
     <authorUrl>www.joomla.org, www.waltercedric.com</authorUrl>
-    <version>2.5.5</version>
+    <version>2.5.7</version>
     <description>MOD_LATEST_NEWS_XML_DESCRIPTION</description>
     <languages>
         <language tag="en-GB">en-GB.mod_articles_latest_thumb.ini</language>

@@ -26,6 +26,34 @@ JHtml::_('behavior.modal', 'a.modal');
     </div>
     -->
     <div style="float: left;">
+        <div class="icon">
+            <?php
+            if (ini_get('allow_url_fopen')) {
+                ?>
+                <img
+                    src="<? echo JURI::root() ?>/media/com_cedthumbnails/images/ok.png"
+                    title="<?php echo JText::_('CedThumbnails should work correctly on your server');?>"
+                    />
+                <span><?php echo JText::_('STATUS');?> <?php echo JText::_('CedThumbnails should work correctly on your server');?></span></a>
+
+                <?php
+            }
+            else {
+                ?>
+                <img
+                    src="<? echo JURI::root() ?>/media/com_cedthumbnails/images/warning.png"
+                    title="<?php echo JText::_('allow_url_fopen directive is NOT enabled in your php.ini, you can not load remote images by URL address and resize them!');?>"
+                    />
+                <span><?php echo JText::_('ERROR');?> <?php echo JText::_('allow_url_fopen directive is NOT enabled in your php.ini, you can not load remote images by URL address and resize them!');?></span></a>
+                <?php
+            }
+            ?>
+        </div>
+    </div>
+
+    <div style="clear:both;"></div>
+
+    <div style="float: left;">
         <div class="icon"><a href="http://www.waltercedric.com" target="_blank"
                              title="<?php echo JText::_('HOME PAGE');?>"> <img
             src="<? echo JURI::root() ?>/media/com_cedthumbnails/images/frontpage.png"/>
@@ -85,9 +113,6 @@ JHtml::_('behavior.modal', 'a.modal');
                 <span><?php echo JText::_('Download');?></span></a>
         </div>
     </div>
-
-
-
 
 
 </div>

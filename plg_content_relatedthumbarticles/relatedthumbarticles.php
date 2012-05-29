@@ -19,7 +19,7 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.plugin.plugin');
 
 require_once(dirname(__FILE__) . DS . 'relatedthumbarticles/controller.php');
-require_once JPATH_SITE . '/components/com_cedthumbnails/helper.php';
+require_once JPATH_SITE . '/components/com_cedthumbnails/helpers/helper.php';
 
 class plgContentRelatedThumbArticles extends JPlugin
 {
@@ -63,12 +63,14 @@ class plgContentRelatedThumbArticles extends JPlugin
         }
 
         $view = JRequest::getString('view');
+        $comCedThumbnailsHelper = new comCedThumbnailsHelper();
         if ($view == 'article' && array_key_exists('catid', $row)) {
-            if (comCedThumbnailsHelper::isActiveInCategory($this->pluginsParams, $row) == false) {
+            if ($comCedThumbnailsHelper->isActiveInCategory($this->pluginsParams, $row) == false) {
                 return true;
             }
-            
-            $html = $this->controller->execute($row->id, $row->catid, $access);
+
+            $controller = new relatedThumbArticlesController($this->pluginsParams);
+            $html = $controller->execute($row->id, $row->catid, $access);
 
             $positioning = intval($this->pluginsParams->get('position', 1));
             if ($positioning) {

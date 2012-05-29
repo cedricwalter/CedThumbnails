@@ -11,7 +11,7 @@
 defined('_JEXEC') or die;
 
 require_once JPATH_SITE . '/components/com_content/helpers/route.php';
-require_once JPATH_SITE . '/components/com_cedthumbnails/helper.php';
+require_once JPATH_SITE . '/components/com_cedthumbnails/helpers/helper.php';
 
 abstract class modRelatedItemsThumbHelper
 {
@@ -114,6 +114,7 @@ abstract class modRelatedItemsThumbHelper
                     $temp = $db->loadObjectList();
 
                     if (count($temp)) {
+                        $comCedThumbnailsHelper = new comCedThumbnailsHelper();
                         $counter = 0;
                         foreach ($temp as $row)
                         {
@@ -123,11 +124,11 @@ abstract class modRelatedItemsThumbHelper
                                 }
 
                                 $row->route = JRoute::_(ContentHelperRoute::getArticleRoute($row->slug, $row->catslug));
-                                $row->image = comCedThumbnailsHelper::getImage($params, $row);
-                                $row->imageSrc = comCedThumbnailsHelper::getResizedImageSource($params, $row->image, "mod_related_items_thumb");
-                                $row->title = comCedThumbnailsHelper::getTitle($params, $row->title);
-                                $row->teaser = comCedThumbnailsHelper::getDescription($params, $row->introtext);
-                                $row->date = comCedThumbnailsHelper::getDateRepresentation($params, $row->created, $showDateInDays);
+                                $row->image = $comCedThumbnailsHelper->getImage($params, $row);
+                                $row->imageSrc = $comCedThumbnailsHelper->getResizedImageSource($params, $row->image, "mod_related_items_thumb");
+                                $row->title = $comCedThumbnailsHelper->getTitle($params, $row->title);
+                                $row->teaser = $comCedThumbnailsHelper->getDescription($params, $row->introtext);
+                                $row->date = $comCedThumbnailsHelper->getDateRepresentation($params, $row->created, $showDateInDays);
                                 $related[] = $row;
 
                             }
