@@ -29,7 +29,7 @@ class comCedThumbnailsHelper
             $height = intval($params->get('thumbnailHeight', 70));
 
             $comCedThumbnailsWideIMage = new comCedThumbnailsWideIMage();
-            $comCedThumbnailsWideIMage->resize($image, $comCedThumbnailsFile->getResizeImageFilename(), $width, $height);
+            $comCedThumbnailsWideIMage->resize($image, JPATH_SITE. '/cache/' .$comCedThumbnailsFile->getResizeImageFilename(), $width, $height);
         }
 
         return JURI::Base() . 'cache/' . $comCedThumbnailsFile->getResizeImageFilename();
