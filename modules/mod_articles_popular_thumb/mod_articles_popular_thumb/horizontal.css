@@ -1,0 +1,58 @@
+.cedth-latest-horiz {
+    width: 100%;
+}
+
+.cedth-latest-horiz-bloc {
+    width: 100%;
+}
+
+.cedth-latest-horiz-entry {
+    display: block;
+    float: left;
+    border-right: 1px solid rgb(221, 221, 221);
+    border-bottom-style: none;
+    margin: 0;
+    text-decoration: none;
+
+    text-align: justify;
+    cursor: pointer;
+    padding: 6px;
+    height: auto; /* Set the height here according to your text and thumbnail height*/
+}
+
+.cedth-latest-horiz-entry:hover {
+    background-color: #fafafa;
+    text-decoration: none;
+}
+
+.cedth-latest-horiz-desc {
+    margin-top: 2px;
+    display: block;
+    color: gray;
+    overflow: hidden;
+    position: relative;
+}
+
+.cedth-latest-horiz-img {
+    padding: 5px;
+    background: #F7F7F7;
+    border: 1px solid #DDD;
+    float: left;
+    width: auto;
+    height: auto;
+}
+
+.cedth-latest-horiz-title {
+    font-size: 12px;
+}
+
+.cedth-latest-horiz-link {
+    margin-top: 2px;
+    display: block;
+    border: none;
+    text-decoration: none;
+}
+
+.cedth-latest-horiz-ago {
+    font-weight: bold;
+}

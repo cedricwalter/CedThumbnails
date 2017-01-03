@@ -1,0 +1,17 @@
+.popular-matrix-posts {
+}
+
+.popular-matrix-posts .entry, .popular-matrix-posts .entry:hover {
+    float: left;
+    margin: 2px 2px 2px 2px;
+    border: solid #fafafa;
+}
+
+.popular-matrix-postsclear {
+    clear: both;
+}
+
+.popular-matrix-posts .entry:hover {
+    border-color: #257EBF; /* blue */
+}
+

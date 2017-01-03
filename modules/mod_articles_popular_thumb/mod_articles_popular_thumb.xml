@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ @package     cedThumbnails
+ @subpackage  com_cedthumbnails
+
+ @copyright   Copyright (C) 2013-2016 galaxiis.com All rights reserved.
+ @license     The author and holder of the copyright of the software is Cédric Walter. The licensor and as such issuer of the license and bearer of the
+              worldwide exclusive usage rights including the rights to reproduce, distribute and make the software available to the public
+              in any form is Galaxiis.com
+              see LICENSE.txt
+ -->
+<extension type="module" version="3.4" client="site" method="upgrade">
+    <name>cedThumbnails - Popular Articles | Galaxiis.com</name>
+    <element>mod_articles_popular_thumb</element>
+    <creationDate>2016-12-31</creationDate>
+    <author>Galaxiis</author>
+    <authorUrl>www.galaxiis.com</authorUrl>
+
+    <copyright>Copyright (C) 2013-2016 galaxiis.com All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL 3.0</license>
+
+    <version>2.9.2</version>
+    <authorEmail>cedric.walter@gmail.com</authorEmail>
+    <description>DESCMOSTREAD</description>
+    <languages>
+        <language tag="en-GB">en-GB.mod_articles_popular_thumb.ini</language>
+        <language tag="en-GB">en-GB.mod_articles_popular_thumb.sys.ini</language>
+    </languages>
+    <media>
+        <folder>mod_articles_popular_thumb</folder>
+    </media>
+    <files>
+        <filename module="mod_articles_popular_thumb">mod_articles_popular_thumb.php</filename>
+        <filename>mod_articles_popular_thumb.xml</filename>
+        <filename>helper.php</filename>
+        <filename>index.html</filename>
+        <folder>tmpl</folder>
+    </files>
+    <config addfieldpath="libraries/galaxiis/fields">
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        id="catid"
+                        name="catid"
+                        type="category"
+                        extension="com_content"
+                        label="JCATEGORY"
+                        description="MOD_POPULAR_FIELD_CATEGORY_DESC"
+                        default=""
+                        class="inputbox">
+                    <option value="">JOPTION_ANY_CATEGORY</option>
+                </field>
+                <field name="show_front" type="radio" default="1" label="Frontpage Items"
+                       description="PARAMFRONTPAGEITEMS" class="btn-group">
+                    <option value="1">show</option>
+                    <option value="0">hide</option>
+                </field>
+                <field name="count" type="text" default="5" required="true" label="Count" description="PARAMCOUNT"
+                       size="2"/>
+
+                <field name="show_period" type="radio" default="0" label="Period"
+                       description="Show the Popular Articles of a specific period" class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="period_months" type="integer" default="6"
+                       required="true"
+                       label="Period in months"
+                       description="show the Popular Articles of the last X months. Default is 6 months"
+                       size="2"
+                       first="1"
+                       last="120"
+                       step="1"/>
+            </fieldset>
+            <fieldset name="Thumbnails" label="Thumbnails">
+                <field name="useThumbnails" type="radio" default="1" label="Use thumbnails"
+                       description="USEIMAGESTHUMBNAILSDESC"
+                       class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="originThumbnails" type="list" default="0" size="7" label="Thumbnails source"
+                       description="USEIMAGESTHUMBNAILSDESC">
+                    <option value="0">search in intro text -> use intro image -> in full text -> use full article
+                        image
+                    </option>
+                    <option value="1">search in intro text only</option>
+                    <option value="11">search in intro text -> use intro image</option>
+                    <option value="111">search in intro image</option>
+                    <option value="2">search in full text only</option>
+                    <option value="22">search in full text -> use full article image</option>
+                    <option value="222">search in full article image</option>
+                    <option value="3">search in intro text -> in full text</option>
+                    <option value="4">search in full text -> in intro text</option>
+                </field>
+                <field name="useDefaultImage" type="radio" default="1" label="Use default image"
+                       description="Use a default image when no image is found in introduction article"
+                       class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="thumbnailWidth" type="integer" default="90" required="true"
+                       label="Thumbnail Width" description="THUMBNAILWIDTHDESC" size="3"
+                       first="1"
+                       last="1000"
+                       step="1"/>
+                <field name="thumbnailHeight" type="integer" default="90" required="true" label="Thumbnail height"
+                       description="THUMBNAILHEIGHTDESC" size="3"
+                       first="1"
+                       last="1000"
+                       step="1"/>
+                <field name="defaultImage" type="media" default="images/cedthumbnails/no-thumbnail.png" size="50"
+                       required="true" label="Default"
+                       description="Default image thumbnail when no image is found in article introtext, fulltext, if relative do not put / in front, default image is a blank jpg"/>
+                <field name="defaultImageAlt" type="text" default="default thumbnail image alt" size="50"
+                       required="true" label="Alt text"
+                       description="Alternative text used for visitors without access to images. Replaced with caption text if it is present."/>
+                <field name="defaultImageCaption" type="text" default="default thumbnail image caption" size="50"
+                       required="true" label="Caption"
+                       description="Caption attached to the image"/>
+
+                <field name="quality" type="integer" default="85"
+                       first="0"
+                       last="100"
+                       step="5"
+                       label="Jpg Quality"
+                       description="The degree of compression can be adjusted, allowing a selectable tradeoff between storage size and image quality."/>
+            </fieldset>
+            <fieldset name="Resizing" label="Resizing">
+                <field name="any" type="cedimage" default="1" size="6" label="Original Picture"
+                       source="media/com_cedthumbnails/images/scaling/original.jpg"
+                       description="determines when to scale an image"
+                       class="btn-group"/>
+
+                <field name="jimageResize" type="scaling" default="1" size="6" label="Select Resizing"
+                       base_path="/media/com_cedthumbnails/images/scaling/"
+                       description="Determines how to scale an image, here a preview of thumbnails requested in 150 x 150 pixels and result based on settings."
+                       class="btn-group">
+                    <option value="1">150x150 Gives you a thumbnail of the exact size, stretched or squished to fit the
+                        parameters.
+                    </option>
+                    <option value="2">128x150 Fits your thumbnail within your given parameters. It will not be any
+                        taller or wider than the size passed,
+                        whichever is
+                        larger.
+                    </option>
+                    <option value="3">150x176 Fits your thumbnail to the given parameters. It will be as tall or as wide
+                        as the size passed, whichever is
+                        smaller.
+                    </option>
+                </field>
+            </fieldset>
+            <fieldset name="Date" label="Date">
+                <field name="showDate" type="radio" default="1" label="Display Date"
+                       description="PLG_CONTENT_RELATEDTHUMBITEMS_DISPLAYDATEAFTERTHEARTICLELINKDESC"
+                       class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="date_format" type="text" default="%Y-%m-%d" label="Date format" required="true"
+                       description="Date format, has to be a valid PHP date format"/>
+                <field name="showDateInDays" type="radio" default="1" label="Show Date In Days"
+                       description="SHOWDATINDAYSDESC"
+                       class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+            <fieldset name="Title" label="Title">
+                <field name="useTitle" type="radio" default="1" label="Use Title" description="USETITLE"
+                       class="btn-group">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+                <field name="titleLength" type="integer" default="15" required="true" label="Title Size"
+                       description="Number of Words to keep from title. Default is 15 words." size="3"
+                       first="1"
+                       last="300"
+                       step="1"/>
+            </fieldset>
+            <fieldset name="Teaser" label="Teaser">
+                <field name="useTeaser" type="radio" default="1" label="Use Text Teaser" description="USETEASER"
+                       class="btn-group">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+                <field name="teaserLength" type="integer" default="50" required="true" size="4" label="Teaser Length"
+                       description="Number of Words to keep from teaser. Default is 50 words."
+                       first="1"
+                       last="300"
+                       step="1"/>
+                <field name="teaserEnding" type="text" required="false" default="" label="Teaser ending"
+                       description="Text sentence terminator, e.g. ..." size="20"/>
+            </fieldset>
+            <fieldset name="Cache" label="Cache">
+                <field name="cacheLocation" type="radio" default="1" label="Cache Location"
+                       description="Cache location for thumbnails. Default is /cache/. Some 3rd party extensions like Akeeba Backup avoid direct references of content in /cache/, in this particular case you can use /media/"
+                       class="btn-group">
+                    <option value="/cache/">/cache/</option>
+                    <option value="/media/">/media/</option>
+                </field>
+            </fieldset>
+            <fieldset name="advanced">
+                <field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL"
+                       description="JFIELD_ALT_MODULE_LAYOUT_DESC"/>
+                <field name="moduleclass_sfx" type="textarea" rows="3" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                       description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC"/>
+                <field name="cache" type="list" default="1" label="COM_MODULES_FIELD_CACHING_LABEL"
+                       description="COM_MODULES_FIELD_CACHING_DESC">
+                    <option value="1">JGLOBAL_USE_GLOBAL</option>
+                    <option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+                <field name="cache_time" type="text" default="900" label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+                       description="COM_MODULES_FIELD_CACHE_TIME_DESC"/>
+                <field name="cachemode" type="hidden" default="static">
+                    <option value="static"/>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>

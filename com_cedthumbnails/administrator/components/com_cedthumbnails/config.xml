@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ @package     CedThumbnails
+ @subpackage  com_cedthumbnails
+
+ @copyright   Copyright (C) 2013-2016 galaxiis.com All rights reserved.
+ @license     The author and holder of the copyright of the software is Cédric Walter. The licensor and as such issuer of the license and bearer of the
+              worldwide exclusive usage rights including the rights to reproduce, distribute and make the software available to the public
+              in any form is Galaxiis.com
+              see LICENSE.txt
+ -->
+<config>
+    <fieldset name="Settings" label="Settings">
+
+        <field name="thumbnails-caching" type="radio" default="1"
+               label="Agressive Thumbnails Caching" description="Resizing big images is a costly operation.
+                       Joomla set as default a cache of 900 seconds, meaning that every 900 seconds the resize will happen again for all images in the current gallery.
+                       If true thumbnails never expire and get created only once, as long as thumbnails exist in cache, they wont be created again even if module cache expire.
+                       To force the creation of thumbnails either empty the cache or remove the file manually. Default is true"
+               class="btn-group">
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+        </field>
+
+
+        <field name="removeCopyright" type="radio" default="0" label="Remove Copyright" description="Remove Copyright (Default is No)" class="btn-group">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field name="debug" type="radio" default="0" label="Debug extension" description="A file will be written at /logs/cedthumbnails.php containing always error and only debug informations if you set this flag to Yes." class="btn-group">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field name="useSafehosts" type="radio" default="0" label="Use safe hosts" description="All images not being located on the list of safe hosts server will be replaced by the default image." class="btn-group">
+            <option value="1">JYES</option>
+            <option value="0">JNO</option>
+        </field>
+        <field name="safeHosts" type="textarea" size="20" default="" label="Safe Host" description="Only allow resize of host starting with (separated by semicolon)." cols="30" rows="2"> </field>
+    </fieldset>
+</config>

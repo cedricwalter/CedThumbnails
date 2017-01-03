@@ -1,0 +1,11 @@
+.cthb-magaz-related-posts {vertical-align: top;border-bottom: #dcdcdc 1px solid;padding-bottom:12px}
+.cthb-magaz-related-posts:hover {background-color: #f6f6f6; }
+.cthb-magaz-related-posts .cthb-magaz-related-posts_block{padding: 0 12px; display: table-cell;height:100px }
+.cthb-magaz-related-posts .cthb-magaz-large{display:inline-block; width:50%;height: 200px;vertical-align: top;overflow:hidden;}
+.cthb-magaz-related-posts .cthb-magaz-column{display:inline-block; width:49%;height: 200px;vertical-align: top;}
+.cthb-magaz-related-posts .cthb-magaz-small{display: inline-block;width: 49%;height: 49%;overflow:hidden;vertical-align: top;margin-bottom: 1%;}
+.cthb-magaz-related-posts .cthb-magaz-post{position:relative;height:100% ;opacity:.85}
+.cthb-magaz-related-posts .cthb-magaz-post a .cthb-magaz-title{color:#fff;font-size: 12px;text-shadow: 0 0 3px #000;font-weight: bold;}
+.cthb-magaz-related-posts .cthb-magaz-post .cthb-magaz-title{position:absolute; bottom:0;text-align:center;padding:5%;width: 90%;}
+.cthb-magaz-related-posts .cthb-magaz-post:hover  {opacity:1 }
+.cthb-magaz-related-posts img{width:100%}

@@ -1,0 +1,77 @@
+.cedthumbfigure {
+    padding: 5px 5px 100px 5px;
+    margin: 0 auto;
+    list-style: none;
+    text-align: center;
+}
+
+.cedthumbfigure li {
+    display: inline-block;
+    width: 220px;
+    margin: 0;
+    padding: 20px;
+    text-align: left;
+    position: relative;
+}
+
+.cedthumbfigure figure {
+    margin: 0;
+    position: relative;
+}
+
+.cedthumbfigure figure img {
+    max-width: 100%;
+    display: block;
+    position: relative;
+}
+
+.cedthumbfigure figcaption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    background: black;
+    color: white;
+}
+
+.cedthumbfigure figcaption h3 {
+    margin: 0;
+    padding: 0;
+    color: red;
+}
+
+.cedthumbfigure figcaption span:before {
+    content: 'by ';
+}
+
+.cedthumbfigure figcaption a {
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 2px;
+    display: inline-block;
+    background: #ed4e6e;
+    color: #fff;
+}
+
+.cs-style-2 figure img {
+    z-index: 10;
+    transition: transform 0.4s;
+}
+
+.no-touch .cs-style-2 figure:hover img,
+.cs-style-2 figure.cs-hover img {
+    transform: translateY(-90px);
+}
+
+.cs-style-2 figcaption {
+    height: 90px;
+    width: 100%;
+    top: auto;
+    bottom: 0;
+}
+
+.cs-style-2 figcaption a {
+    position: absolute;
+    right: 20px;
+    top: 30px;
+}

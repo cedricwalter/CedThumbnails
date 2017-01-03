@@ -1,0 +1,17 @@
+.latest-matrix-posts {
+}
+
+.latest-matrix-posts .entry, .latest-matrix-posts .entry:hover {
+    float: left;
+    margin: 2px 2px 2px 2px;
+    border: solid #fafafa;
+}
+
+.latest-matrix-postsclear {
+    clear: both;
+}
+
+.latest-matrix-posts .entry:hover {
+    border-color: #257EBF; /* blue */
+}
+

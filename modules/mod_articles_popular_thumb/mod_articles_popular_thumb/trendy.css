@@ -1,0 +1,116 @@
+.popular-trendy-posts ul li {
+    list-style-image: none;
+}
+
+.popular-trendy-posts ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 5px 0;
+}
+
+.popular-trendy-posts ul li {
+    border: 0 none;
+    margin: 5px 0;
+    padding: 10px;
+    position: relative;
+}
+
+.popular-trendy-posts ul li:first-child {
+    background: none repeat scroll 0 0 #FF4C54;
+    width: 89%;
+}
+
+.popular-trendy-posts ul li:first-child:after {
+    content: "1";
+}
+
+.popular-trendy-posts ul li:first-child + li {
+    background: none repeat scroll 0 0 #FF764C;
+    width: 87%;
+}
+
+.popular-trendy-posts ul li:first-child + li:after {
+    content: "2";
+}
+
+.popular-trendy-posts ul li:first-child + li + li {
+    background: none repeat scroll 0 0 #FFDE4C;
+    width: 84%;
+}
+
+.popular-trendy-posts ul li:first-child + li + li:after {
+    content: "3";
+}
+
+.popular-trendy-posts ul li:first-child + li + li + li {
+    background: none repeat scroll 0 0 #C7F25F;
+    width: 81%;
+}
+
+.popular-trendy-posts ul li:first-child + li + li + li:after {
+    content: "4";
+}
+
+.popular-trendy-posts ul li:first-child + li + li + li + li {
+    background: none repeat scroll 0 0 #33C9F7;
+    width: 78%;
+}
+
+.popular-trendy-posts ul li:first-child + li + li + li + li:after {
+    content: "5";
+}
+
+.popular-trendy-posts ul li:first-child + li + li + li + li + li {
+    background: none repeat scroll 0 0 #7EE3C7;
+    width: 75%;
+}
+
+.popular-trendy-posts ul li:first-child + li + li + li + li + li:after {
+    content: "6";
+}
+
+.popular-trendy-posts ul li:first-child + li + li + li + li + li + li {
+    background: none repeat scroll 0 0 #F6993D;
+    width: 72%;
+}
+
+.popular-trendy-posts ul li:first-child + li + li + li + li + li + li:after {
+    content: "7";
+}
+
+.popular-trendy-posts ul li:first-child + li + li + li + li + li + li + li {
+    background: none repeat scroll 0 0 #F59095;
+    width: 69%;
+}
+
+.popular-trendy-posts ul li:first-child + li + li + li + li + li + li + li:after {
+    content: "8";
+}
+
+.popular-trendy-posts ul li:first-child + li + li + li + li + li + li + li + li {
+    background: none repeat scroll 0 0 #C7F25F;
+    width: 66%;
+}
+
+.popular-trendy-posts ul li:first-child + li + li + li + li + li + li + li + li:after {
+    content: "9";
+}
+
+.popular-trendy-posts ul li:first-child:after, .popular-trendy-posts ul li:first-child + li:after, .popular-trendy-posts ul li:first-child + li + li:after, .popular-trendy-posts ul li:first-child + li + li + li:after, .popular-trendy-posts ul li:first-child + li + li + li + li:after, .popular-trendy-posts ul li:first-child + li + li + li + li + li:after, .popular-trendy-posts ul li:first-child + li + li + li + li + li + li:after, .popular-trendy-posts ul li:first-child + li + li + li + li + li + li + li:after, .popular-trendy-posts ul li:first-child + li + li + li + li + li + li + li + li:after {
+    background: none repeat scroll 0 0 #353535;
+    border-radius: 50% 50% 50% 50%;
+    color: #FFFFFF;
+    font-size: 25px;
+    height: 30px;
+    position: absolute;
+    right: -17px;
+    text-align: center;
+    top: 1px;
+    width: 30px;
+}
+
+.popular-trendy-posts ul li a {
+    color: #444444;
+    font-size: 13px;
+    text-decoration: none;
+}

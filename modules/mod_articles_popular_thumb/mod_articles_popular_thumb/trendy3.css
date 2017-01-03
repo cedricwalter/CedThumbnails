@@ -1,0 +1,43 @@
+.popular-trendy3-posts ul {
+    padding-left: 0px;
+}
+
+.popular-trendy3-posts ul li {
+    list-style-type: none;
+    margin: 0 0 5px 0px;
+    padding: 5px 5px 5px 20px !important;
+    border: 1px solid #dddddd;
+    -moz-box-shadow: 1px 1px 2px #dcdcdc;
+    -web-kit-box-shadow: 1px 1px 2px #dcdcdc;
+    -goog-ms-box-shadow: 1px 1px 2px #dcdcdc;
+    box-shadow: 1px 1px 2px #dcdcdc;
+    border-radius: 5px;
+    background: rgb(44, 83, 158); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(44, 83, 158, 1) 0%, rgba(44, 83, 158, 1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(44, 83, 158, 1)), color-stop(100%, rgba(44, 83, 158, 1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(44, 83, 158, 1) 0%, rgba(44, 83, 158, 1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(44, 83, 158, 1) 0%, rgba(44, 83, 158, 1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(44, 83, 158, 1) 0%, rgba(44, 83, 158, 1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(44, 83, 158, 1) 0%, rgba(44, 83, 158, 1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2c539e', endColorstr='#2c539e', GradientType=0); /* IE6-9 */
+}
+
+.popular-trendy3-posts ul li:hover {
+    -moz-box-shadow: 1px 1px 2px #dcdcdc;
+    -web-kit-box-shadow: 1px 1px 2px #dcdcdc;
+    -goog-ms-box-shadow: 1px 1px 2px #dcdcdc;
+    box-shadow: 2px 2px 4px #333333;
+    border: 1px solid #333333;
+    color: #fff;
+}
+
+.popular-trendy3-posts ul li a {
+    text-decoration: none;
+    font: 16px Georgia, verdana;
+    color: #ffffff;
+}
+
+.popular-trendy3-posts ul li a:hover {
+    text-decoration: none;
+
+}

@@ -1,55 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="2.5" method="upgrade">
-    <name>cedThumbnails</name>
-    <element>com_cedthumbnails</element>
-    <creationDate>01.12.2011</creationDate>
-    <author>Cedric Walter</author>
-    <authorEmail>www.waltercedric.com</authorEmail>
-    <authorUrl>www.waltercedric.com</authorUrl>
-    <copyright>(c) 2011 Cedric Walter www.waltercedric.com</copyright>
-    <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
-    <version>2.5.8</version>
-    <description>Related/popular/latest posts with thumbnails for Joomla. Use the library WideImage for PHP.
-        3 modules and 1 plugin Extensions.</description>
+<!--
+ @package     cedThumbnails
+ @subpackage  com_cedthumbnails
 
+ @copyright   Copyright (C) 2013-2016 galaxiis.com All rights reserved.
+ @license     The author and holder of the copyright of the software is Cédric Walter. The licensor and as such issuer of the license and bearer of the
+              worldwide exclusive usage rights including the rights to reproduce, distribute and make the software available to the public
+              in any form is Galaxiis.com
+              see LICENSE.txt
+ -->
+<extension type="component" version="3.4" method="upgrade">
+    <name>cedthumbnails</name>
+    <creationDate>2016-12-31</creationDate>
+    <author>Galaxiis</author>
+    <authorEmail>galaxiiscom@gmail.com</authorEmail>
+    <authorUrl>www.galaxiis.com</authorUrl>
 
-    <!-- Extension Update Specification -->
-    <!-- Note: No spaces or linebreaks allowed between the server tags -->
-    <updateservers>
-        <server type="extension" priority="1" name="Extension Update Site">http://updates.waltercedric.com/components/com_cedthumbnails/update.xml</server>
-    </updateservers>
+    <copyright>Copyright (C) 2013-2016 galaxiis.com All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL 3.0</license>
 
-    <media folder="media" destination="com_cedthumbnails">
+    <version>2.9.2</version>
+
+    <description>Related/popular/latest posts with thumbnails for Joomla. 3 modules and 1 plugin Extensions. </description>
+    <languages folder="language/en-GB">
+        <language tag="en-GB">en-GB.com_cedthumbnails.ini</language>
+    </languages>
+
+    <media destination="com_cedthumbnails" folder="media/com_cedthumbnails">
         <folder>css</folder>
         <folder>images</folder>
         <folder>js</folder>
+        <filename>index.html</filename>
     </media>
-
-    <files folder="site">
+    <files folder="components/com_cedthumbnails">
         <filename>index.html</filename>
         <folder>helpers</folder>
     </files>
-
     <administration>
-            <menu link="option=com_cedthumbnails">cedThumbnails</menu>
-
-            <files folder="admin">
-                <filename>controller.php</filename>
-                <filename>cedthumbnails.php</filename>
-                <filename>index.html</filename>
-                <filename>config.xml</filename>
-                <folder>views</folder>
-                <folder>helpers</folder>
-                <folder>models</folder>
-                <folder>controllers</folder>
-            </files>
-<!--
-            <languages folder="admin">
-                <language tag="en-GB">language/en-GB.com_cedthumbnails.ini</language>
-                <language tag="zh-CN">language/zh-CN.com_cedthumbnails.ini</language>
-           </languages>
-           -->
-        </administration>
-
+        <menu link="option=com_cedthumbnails">cedThumbnails</menu>
+        <submenu>
+            <menu view="liveupdate" img="../media/com_cedthumbnails/images/live-update.png">Live Update</menu>
+        </submenu>
+        <files folder="administrator/components/com_cedthumbnails">
+            <filename>controller.php</filename>
+            <filename>cedthumbnails.php</filename>
+            <filename>config.xml</filename>
+            <filename>index.html</filename>
+            <folder>views</folder>
+            <folder>liveupdate</folder>
+            <folder>helpers</folder>
+            <folder>models</folder>
+            <folder>controllers</folder>
+        </files>
+        <languages folder="administrator/language/en-GB">
+            <language tag="en-GB">en-GB.com_cedthumbnails.ini</language>
+        </languages>
+    </administration>
 
 </extension>

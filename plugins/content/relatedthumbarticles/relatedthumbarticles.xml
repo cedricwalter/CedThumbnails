@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.4" type="plugin" group="content" method="upgrade">
+    <name>CedRelatedthumbArticles | Galaxiis.com</name>
+    <author>Galaxiis</author>
+    <creationDate>2016-12-31</creationDate>
+
+    <copyright>Copyright (C) 2013-2016 galaxiis.com All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL 3.0</license>
+
+    <authorEmail>galaxiiscom@gmail.com</authorEmail>
+    <authorUrl>www.galaxiis.com</authorUrl>
+
+    <version>2.9.2</version>
+    <description>PLG_CONTENT_RELATEDTHUMBARTICLES_XML_DESCRIPTION</description>
+
+    <files>
+        <filename plugin="relatedthumbarticles">relatedthumbarticles.php</filename>
+        <filename>index.html</filename>
+        <filename>controller.php</filename>
+        <folder>elements</folder>
+        <folder>models</folder>
+
+        <filename>rendering/index.html</filename>
+
+        <filename>rendering/renderinginterface.php</filename>
+        <filename>rendering/vertical.php</filename>
+        <filename>rendering/horizontal.php</filename>
+
+    </files>
+
+    <media>
+        <folder>plg_content_relatedthumbarticles</folder>
+    </media>
+
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.plg_content_relatedthumbarticles.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_content_relatedthumbarticles.sys.ini</language>
+    </languages>
+
+    <config addfieldpath="libraries/galaxiis/fields">
+        <fields name="params">
+            <fieldset name="basic">
+                <field shortId="cedthumbnails"
+                       name="toolbar"
+                       type="galaxiisbar"/>
+                <field
+                        name="message"
+                        type="galaxiismessage"
+                        message="note"
+                        label="Please help us: vote, suggest and give us your opinion in the Joomla extensions directory. With this you will help us to increase our interest to modify and update the extension. Thank you very much."/>
+                <field
+                        name="version_msg"
+                        type="galaxiismessage"
+                        message="version"
+                        version="2.9.2"
+                        extension_name="CedThumbnails"/>
+
+                <field name="spacer_morestyle" type="spacer"
+                       label="&lt;div style=&quot;font-weight:bold;font-size:11px;color:#000;padding:8px;margin:0;background:#ffd;&quot;&gt;If you use cedthumbnails &lt;a target=&quot;_blank&quot; href=&quot;http://extensions.joomla.org/extensions/news-display/articles-display/related-items/11491&quot;&gt;please post a rating and a review&lt;/a&gt; at the Joomla! Extensions Directory.&lt;/div&gt;"
+                       default="" description=""/>
+
+                <field name="debug" type="radio" default="0" label="PLG_CONTENT_RELATEDTHUMBARTICLES_DEBUG"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_DEBUG_DESC"
+                       class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field name="menu_items_mode" type="radio" default="0" label="Menu mode"
+                       description="Menu mode default is 'All except'"
+                       class="btn-group">
+                    <option value="0">All</option>
+                    <option value="1">Selected</option>
+                    <option value="2">All except</option>
+                </field>
+
+                <field
+                        name="menu_items"
+                        type="menuitem"
+                        label="Menu"
+                        description="Under which menu CedThumbnails is active/inactive"
+                        default=""
+                        multiple="multiple"
+                />
+
+                <field name="categoryMode" type="radio" default="0" label="Category"
+                       description="Select Category Mode. Default is on all categories."
+                       class="btn-group">
+                    <option value="0">All</option>
+                    <option value="1">Selected</option>
+                    <option value="2">All except</option>
+                </field>
+
+                <field name="includedCatIds" type="category" extension="com_content"
+                       require="true"
+                       showon="categoryMode:1,2"
+                       multiple="true" size="10" default="" label="JCATEGORY"
+                       description="MOD_LATEST_NEWS_FIELD_CATEGORY_DESC">
+                    <option value="">JOPTION_ALL_CATEGORIES</option>
+                </field>
+
+                <field name="demo" type="radio" default="0" label="PLG_CONTENT_RELATEDTHUMBARTICLES_DEMO"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_DEMO_DESC"
+                       class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="position" type="list" default="1" label="PLG_CONTENT_RELATEDTHUMBARTICLES_POSITION"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_POSITION_DESC">
+                    <option value="0">PLG_CONTENT_RELATEDTHUMBARTICLES_POSITION_BEFORE</option>
+                    <option value="1">PLG_CONTENT_RELATEDTHUMBARTICLES_POSITION_AFTER</option>
+                </field>
+                <field name="removeCopyright" type="radio" default="0" label="PLG_CONTENT_RELATEDTHUMBARTICLES_BRANDING"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_BRANDING_DESC"
+                       class="btn-group">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+            </fieldset>
+            <fieldset name="Filter" label="PLG_CONTENT_RELATEDTHUMBARTICLES_TAB_FILTER">
+                <field name="filterFeatured" type="radio" default="show" label="PLG_CONTENT_RELATEDTHUMBARTICLES_FILTER"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_FILTER_DESC"
+                       class="btn-group">
+                    <option value="hide">PLG_CONTENT_RELATEDTHUMBARTICLES_FILTER_HIDE</option>
+                    <option value="only">PLG_CONTENT_RELATEDTHUMBARTICLES_FILTER_ONLY</option>
+                    <option value="show">PLG_CONTENT_RELATEDTHUMBARTICLES_FILTER_SHOW</option>
+                </field>
+                <field name="filterAccess" type="radio" default="1"
+                       label="PLG_CONTENT_RELATEDTHUMBARTICLES_FILTER_ACCESS"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_FILTER_ACCESS_DESC"
+                       class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="filterLanguage" type="radio" default="1"
+                       label="PLG_CONTENT_RELATEDTHUMBARTICLES_FILTER_LANG"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_FILTER_LANG_DESC"
+                       class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+            <fieldset name="Style" label="PLG_CONTENT_RELATEDTHUMBARTICLES_TAB_STYLE">
+                <field name="spacer_morestyle" type="spacer"
+                       label="&lt;div style=&quot;font-weight:bold;font-size:11px;color:#000;padding:8px;margin:0;background:#ffd;&quot;&gt;'Get More Style' &lt;a target=&quot;_blank&quot; href=&quot;http://www.galaxiis.com&quot;&gt;get the paid version&lt;/a&gt; of cedthumbnails to have more than 8 exciting styles&lt;/div&gt;"
+                       default="" description=""/>
+
+                <field name="style" type="list" default="horizontal" label="PLG_CONTENT_RELATEDTHUMBARTICLES_STYLE"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_STYLE_DESC">
+
+                    <option value="horizontal">PLG_CONTENT_RELATEDTHUMBARTICLES_STYLE5</option>
+                    <option value="vertical">PLG_CONTENT_RELATEDTHUMBARTICLES_STYLE6</option>
+                </field>
+            </fieldset>
+            <fieldset name="Content" label="PLG_CONTENT_RELATEDTHUMBARTICLES_TAB_ORIGIN">
+
+
+                <field name="searchMode" type="radio" default="Category"
+                       label="PLG_CONTENT_RELATEDTHUMBARTICLES_SEARCH_MODE"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_SEARCH_MODE__DESC" class="btn-group">
+                    <option value="Metakeys">PLG_CONTENT_RELATEDTHUMBARTICLES_SEARCH_MODE_1</option>
+                    <option value="Category">PLG_CONTENT_RELATEDTHUMBARTICLES_SEARCH_MODE_2</option>
+
+                </field>
+
+                <field name="spacer_fortag" type="spacer"
+                       label="&lt;div style=&quot;font-weight:bold;font-size:11px;color:#000;padding:8px;margin:0;background:#ffd;&quot;&gt;'Joomla Tag', 'K2 Tags' &lt;a target=&quot;_blank&quot; href=&quot;http://www.galaxiis.com&quot;&gt;get the paid version&lt;/a&gt; of cedthumbnails to use Joomla tags, K2 tags for related posts &lt;/div&gt;"
+                       default="" description=""/>
+
+
+                <field name="spacer_menus_cats" type="spacer"
+                       label="&lt;div id=&quot;category&quot;  style=&quot;font-weight:normal;font-size:12px;color:#fff;padding:4px;margin:0;background:#666;&quot;&gt;Category&lt;/div&gt;"
+                       default="" description=""/>
+
+                <field name="orderby" type="radio" default="created" label="PLG_CONTENT_RELATEDTHUMBARTICLES_CATEGORY_ORDERING"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_CATEGORY_ORDERING_DESC" class="btn-group">
+                    <option value="id">PLG_CONTENT_RELATEDTHUMBARTICLES_CATEGORY_ORDERING_ID</option>
+                    <option value="created">PLG_CONTENT_RELATEDTHUMBARTICLES_CATEGORY_ORDERING_DATE</option>
+                    <option value="title">PLG_CONTENT_RELATEDTHUMBARTICLES_CATEGORY_ORDERING_TITLE</option>
+                </field>
+                <field name="orderby2" type="radio" default="DESC" label="PLG_CONTENT_RELATEDTHUMBARTICLES_CATEGORY_DIRECTION"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_CATEGORY_DIRECTION_DESC" class="btn-group">
+                    <option value="DESC">PLG_CONTENT_RELATEDTHUMBARTICLES_CATEGORY_DIRECTION_NEWEST</option>
+                    <option value="ASC">PLG_CONTENT_RELATEDTHUMBARTICLES_CATEGORY_DIRECTION_OLDEST</option>
+                </field>
+                <field name="random" type="radio" default="0" label="PLG_CONTENT_RELATEDTHUMBARTICLES_CATEGORY_RANDOM"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_CATEGORY_RANDOM_DESC"
+                       class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+            <fieldset name="Thumbnails" label="Thumbnails">
+                <field name="useThumbnails" type="radio" required="true" default="1" label="PLG_CONTENT_RELATEDTHUMBARTICLES_USE_THUMBNAILS"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_USE_THUMBNAILS_DESC" class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field name="spacer_morescaling" type="spacer"
+                       label="&lt;div style=&quot;font-weight:bold;font-size:11px;color:#000;padding:8px;margin:0;background:#ffd;&quot;&gt;'Get More Scaling' &lt;a target=&quot;_blank&quot; href=&quot;http://www.galaxiis.com&quot;&gt;get the paid version&lt;/a&gt; of cedthumbnails to have more than 6 scaling method&lt;/div&gt;"
+                       default="" description=""/>
+
+                <field name="any" type="cedimage" default="1" size="6" label="PLG_CONTENT_RELATEDTHUMBARTICLES_THUMBNAILS_ORIGINAL"
+                       source="media/com_cedthumbnails/images/scaling/original.jpg"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_THUMBNAILS_ORIGINAL_DESC"
+                       class="btn-group"/>
+
+                <field name="jimageResize" type="scaling" required="true" default="1" size="6" label="PLG_CONTENT_RELATEDTHUMBARTICLES_RESIZE"
+                       base_path="/media/com_cedthumbnails/images/scaling/"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_RESIZE_DESC"
+                       class="btn-group">
+                    <option value="1">PLG_CONTENT_RELATEDTHUMBARTICLES_RESIZE1</option>
+                    <option value="2">PLG_CONTENT_RELATEDTHUMBARTICLES_RESIZE2</option>
+                    <option value="3">PLG_CONTENT_RELATEDTHUMBARTICLES_RESIZE3</option>
+
+                </field>
+
+                <field name="originThumbnails" type="list" required="true" default="0" size="7"
+                       label="PLG_CONTENT_RELATEDTHUMBARTICLES_THUMBNAILS_SOURCE" description="PLG_CONTENT_RELATEDTHUMBARTICLES_THUMBNAILS_SOURCE_DESC">
+                    <option value="0">PLG_CONTENT_RELATEDTHUMBARTICLES_SEARCH0</option>
+                    <option value="1">PLG_CONTENT_RELATEDTHUMBARTICLES_SEARCH1</option>
+                    <option value="11">PLG_CONTENT_RELATEDTHUMBARTICLES_SEARCH1</option>
+                    <option value="111">PLG_CONTENT_RELATEDTHUMBARTICLES_SEARCH111</option>
+                    <option value="2">PLG_CONTENT_RELATEDTHUMBARTICLES_SEARCH2</option>
+                    <option value="22">PLG_CONTENT_RELATEDTHUMBARTICLES_SEARCH22</option>
+                    <option value="222">PLG_CONTENT_RELATEDTHUMBARTICLES_SEARCH222</option>
+                    <option value="3">PLG_CONTENT_RELATEDTHUMBARTICLES_SEARCH3</option>
+                    <option value="4">PLG_CONTENT_RELATEDTHUMBARTICLES_SEARCH4</option>
+                </field>
+                <field name="useDefaultImage" type="radio" default="1" label="PLG_CONTENT_RELATEDTHUMBARTICLES_USE_DEFAULT_IMAGE"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_USE_DEFAULT_IMAGE_DESC" class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="thumbnailWidth" type="integer" default="200" required="true" label="PLG_CONTENT_RELATEDTHUMBARTICLES_THUMBNAIL_WIDTH"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_THUMBNAIL_WIDTH_DESC" size="3"
+                       first="0"
+                       last="1000"
+                       step="1"/>
+                <field name="thumbnailHeight" type="integer" default="200" required="true" label="PLG_CONTENT_RELATEDTHUMBARTICLES_THUMBNAIL_HEIGHT"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_THUMBNAIL_HEIGHT_DESC" size="3"
+                       first="0"
+                       last="1000"
+                       step="1"/>
+                <field name="defaultImage" type="media" default="images/cedthumbnails/no-thumbnail.png"
+                       size="50" required="true" label="PLG_CONTENT_RELATEDTHUMBARTICLES_DEFAULT_IMAGE"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_DEFAULT_IMAGE_DESC"/>
+
+                <field name="defaultImageAlt" type="text" default="No Thumbnail was found" size="50" required="true"
+                       label="PLG_CONTENT_RELATEDTHUMBARTICLES_DEFAULT_IMAGE_ALT_TEXT"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_DEFAULT_IMAGE_ALT_TEXT_DESC"/>
+                <field name="defaultImageCaption" type="text" default="No Thumbnail was found" size="50" required="true"
+                       label="PLG_CONTENT_RELATEDTHUMBARTICLES_DEFAULT_IMAGE_CAPTION"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_DEFAULT_IMAGE_CAPTION_DESC"/>
+
+                <field name="limit" type="integer" default="4" required="true" label="PLG_CONTENT_RELATEDTHUMBARTICLES_HOW_MANY_ITEMS_WILL_BE_DISPLAY"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_HOW_MANY_ITEMS_WILL_BE_DISPLAY_DESC" size="2"
+                       first="0"
+                       last="20"
+                       step="1"/>
+
+                <field name="spacer_moresoutput" type="spacer"
+                       label="&lt;div style=&quot;font-weight:bold;font-size:11px;color:#000;padding:8px;margin:0;background:#ffd;&quot;&gt;'Get More Format (gif, png)' &lt;a target=&quot;_blank&quot; href=&quot;http://www.galaxiis.com&quot;&gt;get the paid version&lt;/a&gt; of cedthumbnails&lt;/div&gt;"
+                       default="" description=""/>
+
+                <field name="thumbnailsOutput" type="radio" default="2" label="PLG_CONTENT_RELATEDTHUMBARTICLES_THUMBNAILS_TYPE"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_THUMBNAILS_TYPE_DESC" class="btn-group">
+                    <option value="2">PLG_CONTENT_RELATEDTHUMBARTICLES_THUMBNAILS_TYPE_JPEG</option>
+                </field>
+
+                <field name="quality" type="integer" default="85"
+                       first="0"
+                       last="100"
+                       step="5"
+                       label="PLG_CONTENT_RELATEDTHUMBARTICLES_THUMBNAILS_JPEG_QUALITY"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_THUMBNAILS_JPEG_QUALITY_DESC"/>
+
+                <field name="pngQuality" type="integer" default="9"
+                       first="0"
+                       last="9"
+                       step="1"
+                       label="PLG_CONTENT_RELATEDTHUMBARTICLES_THUMBNAILS_PNG_QUALITY"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_THUMBNAILS_PNG_QUALITY_DESC"/>
+
+            </fieldset>
+            <fieldset name="Date" label="Date">
+                <field name="showDate" type="radio" default="1" label="PLG_CONTENT_RELATEDTHUMBARTICLES_DISPLAY_DATE"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_DISPLAY_DATE_DESC" class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <!--<field name="date_format" type="text" default="%Y-%m-%d" label="Date format" required="true"-->
+                       <!--description="Date format, has to be a valid PHP date format"/>-->
+
+                <field name="date_format" type="radio" default="Y-m-d" label="PLG_CONTENT_RELATEDTHUMBARTICLES_DATE_FORMAT" description="PLG_CONTENT_RELATEDTHUMBARTICLES_DATE_FORMAT_DESC"
+                       class="btn-group">
+                    <option value="%Y-%m-%d">yyyy-mm-dd</option>
+                    <option value="Y-m-d">yyyy-mm-dd</option>
+                    <option value="Y-m-d H:i:s">Y-m-d H:i:s</option>
+
+                </field>
+
+                <field name="showDateInDays" type="radio" default="1" label="PLG_CONTENT_RELATEDTHUMBARTICLES_DATE_DELTA"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_DATE_DELTA_DESC" class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+            </fieldset>
+            <fieldset name="Title" label="PLG_CONTENT_RELATEDTHUMBARTICLES_TAB_TITLE">
+                <field name="useTitle" type="radio" default="1" label="PLG_CONTENT_RELATEDTHUMBARTICLES_USE_TITLE" description="PLG_CONTENT_RELATEDTHUMBARTICLES_USE_TITLE_DESC"
+                       class="btn-group">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+                <field name="titleLength" type="integer" default="15" required="true" label="PLG_CONTENT_RELATEDTHUMBARTICLES_TITLE_LENGTH"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_TITLE_LENGTH_DESC" size="3"
+                       first="1"
+                       last="30"
+                       step="1"
+                        />
+            </fieldset>
+            <fieldset name="Teaser" label="Teaser">
+                <field name="useTeaser" type="radio" default="1" label="PLG_CONTENT_RELATEDTHUMBARTICLES_USE_TEASER"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_USE_TEASER_DESC" class="btn-group">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+                <field name="teaserLength" type="integer" default="50" required="true" size="4" label="PLG_CONTENT_RELATEDTHUMBARTICLES_TEASER_LENGTH"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_TEASER_LENGTH_DESC"
+                       first="1"
+                       last="300"
+                       step="1"
+                        />
+                <field name="teaserEnding" type="text" required="false" default=" …" label="PLG_CONTENT_RELATEDTHUMBARTICLES_TEASER_ENDING"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_TEASER_ENDING_DESC" size="20"/>
+            </fieldset>
+            <fieldset name="Cache" label="Cache">
+                <field name="cacheLocation" type="radio" default="cache" label="PLG_CONTENT_RELATEDTHUMBARTICLES_CACHE_LOCATION"
+                       description="PLG_CONTENT_RELATEDTHUMBARTICLES_CACHE_LOCATION_DESC"
+                       class="btn-group">
+                    <option value="cache">/cache</option>
+                    <option value="cedthumbnails">/cedthumbnails</option>
+                    <option value="media">/media</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
