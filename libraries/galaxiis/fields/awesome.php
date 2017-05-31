@@ -23,7 +23,7 @@ class JFormFieldAwesome extends JFormFieldRadio {
         $options = array();
 
         $document = JFactory::getDocument();
-        $document->addStyleSheet('//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
+        $document->addStyleSheet('//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
         foreach ($this->element->children() as $option)
         {

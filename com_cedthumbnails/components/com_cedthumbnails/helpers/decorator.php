@@ -3,7 +3,7 @@
  * @package     cedThumbnails
  * @subpackage  com_cedthumbnails
  *
- * @copyright   Copyright (C) 2013-2016 galaxiis.com All rights reserved.
+ * @copyright   CedThumbnails 3.1.3 - Copyright (C) 2013-2017 galaxiis.com All rights reserved.
  * @license     The author and holder of the copyright of the software is Cédric Walter. The licensor and as such issuer of the license and bearer of the
  *              worldwide exclusive usage rights including the rights to reproduce, distribute and make the software available to the public
  *              in any form is Galaxiis.com
@@ -11,63 +11,84 @@
  */
 
 // no direct access
+use cedthumbnails\Cache;
+use cedthumbnails\ImageDetector;
+use cedthumbnails\ImageFactory;
+use cedthumbnails\ImageResizer;
+
 defined('_JEXEC') or die('Restricted access');
 
-require_once dirname(__FILE__). '/helper.php';
-require_once dirname(__FILE__). '/imagedetector.php';
-require_once dirname(__FILE__). '/imageresizer.php';
+require_once dirname(__FILE__) . '/helper.php';
+require_once dirname(__FILE__) . '/imagedetector.php';
+require_once dirname(__FILE__) . '/imageresizer.php';
+require_once dirname(__FILE__) . '/cache.php';
 
 class cedThumbnailsDecorator
 {
 
-    public static function decorate(&$params, &$items, $extension)
-    {
-        $imageDetector = new comCedThumbnailsImageDetector();
-        $helper = new comCedThumbnailsHelper();
+	private $imageDetector;
+	private $helper;
+	private $resizer;
+	private $modelFactory;
+	private $defaultImageModel;
 
+	public function __construct($params)
+	{
+		$this->helper        = new comCedThumbnailsHelper();
 
-        $componentParams = JComponentHelper::getParams("com_cedthumbnails");
-        $aggressiveThumbnailsCaching = $componentParams->get('thumbnails-caching', 1);
+		$this->modelFactory  = new ImageFactory();
 
-        $cacheLocation = $params->get('cacheLocation', "cache");
+		$this->defaultImageModel = $this->modelFactory->buildDefaultImageModel($params);
 
-	    // true use relative url, need / with false dont need it
-        $cache = new comCedThumbnailsImageCache(JUri::base(true).'/'.$cacheLocation, JPATH_SITE.DIRECTORY_SEPARATOR.$cacheLocation, $extension, $aggressiveThumbnailsCaching);
+		$this->imageDetector = new ImageDetector(intval($params->get('originThumbnails', 1)), $this->defaultImageModel);
+	}
 
-        $scale = comCedThumbnailsImageResizer::withParams($params, $cache);
+	public function decorate(&$params, &$items, $extension)
+	{
+		$componentParams             = JComponentHelper::getParams("com_cedthumbnails");
+		$aggressiveThumbnailsCaching = $componentParams->get('thumbnails-caching', 1);
 
-        $useThumbnails = $params->get('useThumbnails', 1);
-        $defaultImageModel = comCedThumbnailsImageModelFactory::buildDefaultImageModel($params);
+		$cacheLocation = $params->get('cacheLocation', "cache");
 
-        $comCedThumbnailsFilter = new comCedThumbnailsFilter(JPATH_SITE, JURI::base(), $defaultImageModel);
+		// true use relative url, need / with false dont need it
+		$cache = new Cache(JUri::base(true) . '/' . $cacheLocation, JPATH_SITE . DIRECTORY_SEPARATOR . $cacheLocation, $extension, $aggressiveThumbnailsCaching);
 
-        $i = 0;
-        foreach ($items as &$item) {
-            $item->teaser = $helper->getDescription($params, $item->introtext, $item->fulltext);
-            $item->title = $helper->getTitle($item->title, $params->get('useTitle', 1), $params->get('titleLength', '60'));
+		$scale = ImageResizer::withParams($params, $cache);
 
-            if ($useThumbnails) {
-                $imageModel = $imageDetector->getImage($params, $item);
+		$useThumbnails = $params->get('useThumbnails', 1);
 
-                $item->image = $imageModel->url;
+		$defaultImageModel = $this->modelFactory->buildDefaultImageModel($params);
 
-                $filteredImageModel = $comCedThumbnailsFilter->filter($imageModel);
+		$i = 0;
+		foreach ($items as &$item)
+		{
+			$item->teaser = $this->helper->getDescription($params, $item->introtext, $item->fulltext);
+			$item->title  = $this->helper->getTitle($item->title, $params->get('useTitle', 1), $params->get('titleLength', '60'));
 
-                $resize = $scale->resize($filteredImageModel);
-                if ($resize == null) {
-                    // exception while resizing
-                    $item->imgSrc = $defaultImageModel->url;
-                } else {
-                    $item->imgSrc = $resize;
-                }
+			if ($useThumbnails)
+			{
+				$imageModel = $this->imageDetector->getImage($item);
 
-                $item->alt = $helper->getImageAlt($item->title, $imageModel->alt);
-                $item->caption = $helper->getImageCaption($item->title, $imageModel->caption);
-            }
+				$item->image = $imageModel->url;
 
-            $i++;
-        }
+				$resizedImage = $scale->resize($imageModel);
+				if ($resizedImage == null)
+				{
+					// exception while resizing
+					$item->resizedImage = $defaultImageModel->url;
+				}
+				else
+				{
+					$item->resizedImage = $resizedImage;
+				}
 
-        return $items;
-    }
+				$item->alt     = $this->helper->getImageAlt($item->title, $imageModel->alt);
+				$item->caption = $this->helper->getImageCaption($item->title, $imageModel->caption);
+			}
+
+			$i++;
+		}
+
+		return $items;
+	}
 }

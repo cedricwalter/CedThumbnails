@@ -1,9 +1,9 @@
 <?php
 /**
- * @package     cedThumbnails
+ * @package     CedThumbnails
  * @subpackage  com_cedthumbnails
  *
- * @copyright   Copyright (C) 2013-2016 galaxiis.com All rights reserved.
+ * @copyright   CedThumbnails 3.1.3 - Copyright (C) 2013-2017 galaxiis.com All rights reserved.
  * @license     The author and holder of the copyright of the software is Cédric Walter. The licensor and as such issuer of the license and bearer of the
  *              worldwide exclusive usage rights including the rights to reproduce, distribute and make the software available to the public
  *              in any form is Galaxiis.com
@@ -15,107 +15,52 @@ defined('_JEXEC') or die('Restricted access');
 // Load the javascript
 JHtml::_('behavior.framework');
 JHtml::_('behavior.modal', 'a.modal');
+
+$document = JFactory::getDocument();
+$document->addStyleSheet("https://netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.css");
+
 ?>
 
-<div class="tagpanel">
+<h1>CedThumbnails 3.1.4 <?php echo $this->isFree; ?></h1>
 
-    <div style="float: left;">
-        <div class="icon">
-            <a href="index.php?option=com_cedthumbnails&view=liveupdate"
-               title="<?php echo JText::_('Live Update');?>"> <img
-                    src="<?php echo JURI::root() ?>/media/com_cedthumbnails/images/update_48x48.png"
-                    alt="<?php echo JText::_('Live Update');?>"/>
-                <span><?php echo JText::_('Live Update');?></span></a></div>
+<div>
+
+    <div>
+        <a href="https://www.galaxiis.com/" target="_blank" title="Home"><i class="fa fa-home fa-4x" aria-hidden="true">  Home.</i></a>
     </div>
-    <div style="float: left;">
-        <div class="icon"><a href="https://www.galaxiis.com/" target="_blank"
-                             title="<?php echo JText::_('HOME PAGE');?>"> <img
-                src="<?php echo JUri::root() ?>/media/com_cedthumbnails/images/galaxiis3.jpg"/>
-            <span><?php echo JText::_('HOME');?></span></a>
-        </div>
+    <div>
+        <a href="https://www.galaxiis.com/cedthumbnails-doc/" target="_blank" title="Documentation"><i class="fa fa-book fa-4x" aria-hidden="true">  Documentation.</i></a>
     </div>
-    <div style="float: left;">
-        <div class="icon"><a
-                href="https://www.galaxiis.com/cedthumbnails-download-doc/"
-                target="_blank"
-                title="<?php echo JText::_('MANUAL');?>"> <img
-                src="<?php echo JURI::root() ?>/media/com_cedthumbnails/images/manual.png"/>
-            <span><?php echo JText::_('MANUAL');?></span></a>
-        </div>
+    <div>
+
+        <a href="https://www.galaxiis.com/forums/" target="_blank" title="Forums"><i class="fa fa-life-ring fa-4x" aria-hidden="true">  Forums.</i></a>
     </div>
-    <div style="float: left;">
-        <div class="icon"><a
-                href="https://www.galaxiis.com/forums/"
-                target="_blank"
-                title="<?php echo JText::_('FORUM');?>"> <img
-                src="<?php echo JURI::root() ?>/media/com_cedthumbnails/images/forum.png"/>
-            <span><?php echo JText::_('FORUM');?></span></a>
-        </div>
-    </div>
-    <div style="float: left;">
-        <div class="icon"><a
-                href="https://confluence.galaxiis.com/display/GAL/SOFTWARE+LICENSE+AGREEMENT"
-                target="_blank"
-                title="<?php echo JText::_('LICENSE');?>"> <img
-                src="<?php echo JURI::root() ?>/media/com_cedthumbnails/images/license.png"/>
-            <span><?php echo JText::_('LICENSE');?></span></a>
-        </div>
+    <div>
+        <a href="http://documentation.galaxiis.com/license" target="_blank" title="License"><i class="fa fa-gavel fa-4x" aria-hidden="true">  License.</i></a>
     </div>
 
-
-    <div style="float: left;">
+    <div>
+        <a href="https://www.galaxiis.com/cedthumbnails-jed/" target="_blank" title="Joomla JED review"><i class="fa fa-joomla fa-4x" aria-hidden="true"> Joomla JED review.</i></a>
+    </div>
+    <div>
         <div class="icon">
-            <a href="http://extensions.joomla.org/extensions/news-display/articles-display/related-items/11491"
-               target="_blank"
-               title="<?php echo JText::_('JED VOTE');?>"> <img
-                    src="<?php echo JURI::root() ?>/media/com_cedthumbnails/images/jed.png"/>
-                <span><?php echo JText::_('JED VOTE');?></span></a>
+            <a href="https://www.galaxiis.com/cedthumbnails-download/" target="_blank" title="Download latest free version">
+                <i class="fa fa-download fa-4x" aria-hidden="true">
+                    Download latest free version.</i></a>
         </div>
     </div>
-    <div style="float: left;">
-        <div class="icon">
-            <a href="https://www.galaxiis.com/cedthumbnails-download/"
-               target="_blank"
-               title="<?php echo JText::_('Download');?>"> <img
-                    src="<?php echo JURI::root() ?>/media/com_cedthumbnails/images/download.png"/>
-                <span><?php echo JText::_('Download');?></span></a>
-        </div>
+    <div>
+        <a href="https://www.facebook.com/galaxiiscom" target="_blank" title="Like Us on Facebook"><i class="fa fa-facebook fa-4x" aria-hidden="true">
+                Like Galaxiis on Facebook.</i></a>
     </div>
-    <div style="float: left;">
-        <div class="icon">
-            <a href="https://www.facebook.com/galaxiiscom"
-               target="_blank"
-               title="<?php echo JText::_('Like on Facebook');?>"> <img
-                    src="<?php echo JURI::root() ?>/media/com_cedthumbnails/images/facebook.png"/>
-                <span><?php echo JText::_('Like on Facebook');?></span></a>
-        </div>
+    <div>
+        <a href="https://www.twitter.com/galaxiiscom" target="_blank" title="Follow Us on Twitter"><i class="fa fa-twitter fa-4x" aria-hidden="true">
+                Follow Galaxiis on Twitter.</i></a>
     </div>
-    <div style="float: left;">
-        <div class="icon">
-            <a href="https://twitter.com/galaxiiscom"
-               target="_blank"
-               title="<?php echo JText::_('Follow Me on Twitter');?>"> <img
-                    src="<?php echo JURI::root() ?>/media/com_cedthumbnails/images/twitter.png"/>
-                <span><?php echo JText::_('Follow Me on Twitter');?></span></a>
-        </div>
-    </div>
-    <div style="float: left;">
-        <div class="icon">
-            <a href="https://plus.google.com/u/0/104558366166000378462"
-               target="_blank"
-               title="<?php echo JText::_('Follow Me on Google+');?>"> <img
-                    src="<?php echo JURI::root() ?>/media/com_cedthumbnails/images/google.png"/>
-                <span><?php echo JText::_('Follow Me on Google+');?></span></a>
-        </div>
+    <div>
+        <a href="https://plus.google.com/u/0/104558366166000378462" target="_blank" title="Follow Me on Google+"><i class="fa fa-google-plus fa-4x" aria-hidden="true">
+                Follow Galaxiis on Google+</i></a>
     </div>
 </div>
-
-<div class="tagversion">
-
-    <h1>CedThumbnails <?php echo $this->version ?><?php echo $this->isFree; ?></h1>
-
-        <h3>join now - get the licensed version of cedThumbnails and enjoy more customizations and features!</h3>
-        <a href="https://www.galaxiis.com/subscribe.html" alt="join now" title="join now - get the licensed version of cedThumbnails and enjoy more customizations and features!" target="_new"><img src="<?php echo JURI::root() ?>/media/com_cedthumbnails/images/joinnow.png" /></a>
-
-    <p>Copyright (C) 2013-2016 galaxiis.com All rights reserved.</p>
-</div>
+<div></div>
+<p>CedThumbnails 3.1.3 - Copyright (C) 2013-2017 galaxiis.com All rights reserved.</p>

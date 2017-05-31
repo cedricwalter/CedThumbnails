@@ -19,12 +19,15 @@ class JFormFieldAdvertisement extends JFormFieldMedia
     protected $type = 'advertisement';
 
     protected $image;
-
+    protected $label = "";
 
     public function __get($name)
     {
         switch ($name) {
             case 'image':
+                return $this->$name;
+
+            case 'label':
                 return $this->$name;
         }
 
@@ -35,6 +38,10 @@ class JFormFieldAdvertisement extends JFormFieldMedia
     {
         switch ($name) {
             case 'image':
+                $this->$name = (string)$value;
+                break;
+
+                case 'label':
                 $this->$name = (string)$value;
                 break;
 
@@ -49,6 +56,7 @@ class JFormFieldAdvertisement extends JFormFieldMedia
 
         if ($result == true) {
             $this->image = (string)$this->element['image'];
+            $this->label = (string)$this->element['label'];
         }
 
         return $result;
@@ -57,7 +65,9 @@ class JFormFieldAdvertisement extends JFormFieldMedia
     function getLabel()
     {
         $base = $this->element['base_path'];
-        return  "<img src='".JUri::root().$base.$this->image."'><br />";
+        return  "
+        <h2>$this->label</h2>
+        <img src='".JUri::root().$base.$this->image."'><br />";
     }
 
     protected function getInput()
